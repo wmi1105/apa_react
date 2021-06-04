@@ -1,0 +1,11 @@
+@charset"utf-8";
+
+/* 인덱스 전용 */
+.mbanner{position:relative;}
+.mbanner .swiper_pag_wrap{position:absolute; bottom:56px; left:20px; z-index:2;}
+.mbanner .swiper-pagination{position:relative; height:24px; border:1px solid #fff; border-radius:12px; line-height:22px; color:#fff; font-size:10px; padding:0 10px; box-sizing:border-box;}
+.mbanner .swiper-pagination:after{content:""; position:relative; top:2px; display:inline-block; width:11px; height:11px; margin-left:3px; 
+    background:url(../image/common/icn_arrow_back.svg) no-repeat 0 0; 
+    background-size:100% auto; transform:rotate(-180deg); transform-origin:center center;}
+.mbanner .swiper-pagination span{line-height:22px; color:#fff; font-size:10px;}
+.mbanner .swiper-pagination-total{opacity:0.5;}
