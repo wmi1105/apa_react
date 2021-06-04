@@ -12,15 +12,15 @@ const KakaoLoginBtn = ({children, onResponse}) => {
             onLogout = {console.info}
             render={({ onClick }) => {
                 return (
-                  <a
-                    href="#"
+                  <button
+                  type="button"
                     onClick={(e) => {
                       e.preventDefault();
                       onClick();
                     }}
                   >
                     {children}
-                  </a>
+                  </button>
                 )}
             }
          />

@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-import Section from "../../inc/Section";
+import Section from "component/inc/Section";
 import AppleLoginBtn from "./socialLogin/AppleLoginBtn";
 import GoogleLoginBtn from "./socialLogin/GoogleLoginBtn";
 import KakaoLoginBtn from "./socialLogin/KakaoLoginBtn";
@@ -50,13 +50,13 @@ const Login = ({ history }) => {
             </ul>
             <ul className="links">
               <li>
-                <a href={() => false} onClick={() => history.push('/find/password')}>이메일 찾기</a>
+                <button type="button" onClick={() => history.push('/find/password')}>이메일 찾기</button>
               </li>
               <li>
-                <a href={() => false} onClick={() => history.push('/find/email')}>비밀번호 찾기</a>
+                <button type="button" onClick={() => history.push('/find/email')}>비밀번호 찾기</button>
               </li>
               <li>
-                <a href={() => false} onClick={() => history.push('/join/selectType')}>회원가입</a>
+                <button type="button" onClick={() => history.push('/join/selectType')}>회원가입</button>
               </li>
             </ul>
             <dl className="sns">

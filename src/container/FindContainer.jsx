@@ -1,30 +1,27 @@
-import React, { useState } from "react";
-import FindForm from "../component/auth/find/FindForm";
+import React from "react";
+import FindForm from "component/auth/find/FindForm";
 
 const FindContainer = ({ match }) => {
   const findType = match.params.type;
-  const [submitResult, setSubmitResult] = useState({
-      type : '',
-      result: false
-  });
-
+  
   const onSubmit = (type, { data }) => {
-    if (type === "phone") {
-      setSubmitResult({
-        type: "phone",
-        result: true,
-        next : 'confirm'
-      });
+    const returnObj = {
+      type : type,
+      result : true,
+      next : ''
     }
 
-    if (type === "confirm") {
-
-      setSubmitResult({
-        type: "confirm",
-        result: true,
-        next : findType
-      });
+    if(type === 'email'){
+      returnObj['result'] = true;
+    }else if(type === 'phone'){
+      returnObj['result'] = true;
+      returnObj['next'] = 'confirm';
+    }else if(type === 'confirm'){
+      returnObj['result'] = true;
+      returnObj['next'] = 'emailCheck';
     }
+
+    return returnObj;
   };
 
   return (
@@ -32,7 +29,6 @@ const FindContainer = ({ match }) => {
       <FindForm
         type={findType}
         onSubmit={onSubmit}
-        submitResult={submitResult}
       />
     </>
   );

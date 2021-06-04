@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Header from "../inc/Header";
-import Modal from "../inc/Modal";
-import Postcode from "../inc/PostCode";
-import Top from "../inc/Top";
+import Header from "component/inc/Header";
+import Modal from "component/inc/Modal";
+import Postcode from "component/inc/PostCode";
 import UserInfo from "./UserInfo";
 import UserInfoModal from "./UserInfoModal";
 
@@ -34,8 +33,6 @@ const UserForm = ({modUserInfo}) => {
 
   return (
     <>
-      <Top />
-
       <div id="wrap" className="member">
         <Header headerType="back">나의 정보</Header>
         <UserInfo modInfo={setModModal}/>

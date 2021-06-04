@@ -1,28 +1,40 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { withRouter } from "react-router";
 
-import Top from "../../inc/Footer";
-import Header from "../../inc/Header";
+import Header from "component/inc/Header";
+import Modal from "component/inc/Modal";
+import SerEmail from "./SerEmail";
 import SerPhone from "./SerPhone";
 import Confirm from "./Confirm";
-
 import FindModal from "./FindModal";
 import EmailCheck from "./EmailCheck";
-import PasswordCheck from "./PasswordCheck";
-import Modal from "../../inc/Modal";
 
-const FindForm = ({ type, onSubmit, submitResult }) => {
+const FindForm = ({ history, type, onSubmit }) => {
   const [modalTargetId, setModalTargetId] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
   const [step, setStep] = useState("cerPhone");
 
+  //비밀번호찾기 -> 이메일로 임시 비밀번호 전송
+  const cerEmailSubmit = (mail) => {
+    const submit = onSubmit('email', {data : mail});
+    if(submit.result){
+      setModalTargetId('cer_mail');
+      setModalVisible(true);
+    }
+  }
+
+  //이메일 찾기 -> 문자로 인증번호 전송
   const cerPhoneSubmit = (number) => {
     //인증번호 요청
-    onSubmit("phone", { data: number });
+    const submit = onSubmit("phone", { data: number });
+    setSubmitResult(submit);
     setModalTargetId("cer_phone");
     setModalVisible(true);
   };
 
+
+  //이메일찾기 -> 인증번호 확인
   const confirmSubmit = (code) => {
     //인증번호 전송
     onSubmit("confirm", { data: code });
@@ -31,9 +43,14 @@ const FindForm = ({ type, onSubmit, submitResult }) => {
     // else if (type === "email") history.push("./emailCheck");
   };
 
+  //modal 확인버튼
   const modalOk = () => {
-    setModalVisible(false);
-    setStep(submitResult.next);
+    if(type === 'eamil'){
+      setModalVisible(false);
+      setStep(submitResult.next);
+    }else if(type === 'password'){
+      history.push('/login/email')
+    }
   };
 
   const header = useMemo(() => {
@@ -52,19 +69,26 @@ const FindForm = ({ type, onSubmit, submitResult }) => {
 
   return (
     <>
-      <Top />
-
       <div id="wrap" className="member">
         {/* wrap start */}
         {header}
 
-        {/* container start */}
-        {step === "cerPhone" && <SerPhone cerPhoneSubmit={cerPhoneSubmit} />}
-        {step === "confirm" && (
-          <Confirm confirmSubmit={confirmSubmit} submitResult={submitResult} />
-        )}
-        {step === "password" && <PasswordCheck />}
-        {step === "email" && <EmailCheck />}
+        {type === 'password' && 
+          <>
+            <SerEmail cerEmailSubmit={cerEmailSubmit} />
+          </>
+        }
+
+        {type === 'email' && 
+          <>
+            {step === "cerPhone" && <SerPhone cerPhoneSubmit={cerPhoneSubmit} />}
+            {step === "confirm" && (
+              <Confirm confirmSubmit={confirmSubmit} submitResult={submitResult} />
+            )}
+            {step === "email" && <EmailCheck />}    
+          </>
+        }
+        
 
         <Modal targetId={modalTargetId} visible={modalVisible}>
           <FindModal targetId={modalTargetId} onClickOk={modalOk} />

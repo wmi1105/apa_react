@@ -1,5 +1,5 @@
 import React from 'react';
-import IentifyForm from '../component/auth/identification/IentifyForm';
+import IentifyForm from 'component/auth/identification/IentifyForm';
 
 const IdentifyContainer = ({history, match}) => {
 

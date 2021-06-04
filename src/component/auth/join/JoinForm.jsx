@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import Top from "../../inc/Top";
-import Header from "../../inc/Header";
+import Header from "component/inc/Header";
 import SelectType from "./SelectType";
 
 import OverAccount from "./OverAccount";
@@ -14,8 +13,6 @@ const JoinForm = ({ type, page }) => {
 
   return (
     <>
-      <Top />
-
       <div id="wrap" className="member">
         {/* wrap start */}
         

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { setContents } from '../../js/common_pub';
+import { setContents } from 'js/common_pub';
 
 const Section = (props) => {
     const [containerSize, setContainerSize] = useState(null);

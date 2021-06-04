@@ -1,5 +1,5 @@
 import React from 'react';
-import JoinForm from '../component/auth/join/JoinForm';
+import JoinForm from 'component/auth/join/JoinForm';
 
 const JoinContainer = ({history, match}) => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo_top from "../../image/common/logo_top.svg";
+import logo_top from "image/common/logo_top.svg";
 
 import Home from './Home'
 
@@ -7,10 +7,6 @@ const HomeForm = ({history}) => {
 
     return(
         <>
-        <p className="skip">
-            <a href="#contents">본문 바로가기</a>
-        </p>
-
         <div id="wrap" className="index">
             {/* wrap start */}
 

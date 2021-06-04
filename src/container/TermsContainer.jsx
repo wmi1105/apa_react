@@ -1,5 +1,5 @@
 import React from 'react';
-import TermsFrom from '../component/terms/TermsFrom';
+import TermsFrom from 'component/terms/TermsFrom';
 
 const TermsContainer = ({history}) => {
 

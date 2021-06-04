@@ -43,13 +43,13 @@ const UserInfoModal = ({ targetId, onClickCancel, onClickOk }) => {
       <ul className="btns">
         <li>
           <p className="btn">
-            <a
-              href="#"
+            <button
+              type="button"
               className="pop_confirm"
               onClick={onClickCancel}
             >
               취소
-            </a>
+            </button>
           </p>
         </li>
         <li>

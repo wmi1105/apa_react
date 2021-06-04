@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import LoginForm from '../component/auth/login/LoginForm';
+import LoginForm from 'component/auth/login/LoginForm';
 
 const LoginContainer = ({history, match}) => {
     const [loginType, setLoginType] = useState('');

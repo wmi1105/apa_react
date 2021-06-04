@@ -38,7 +38,20 @@ export function setContents(){
 
 	return size;
 }
+
 /* 화면 컨텐츠 높이 세팅 end */
+
+/* 토글클래스 start */
+$(document).on(
+	"click", ".click_add_on", function(){
+
+	var thisNum=$(".click_add_on").index(this);
+	var thisAddOn=$(".click_add_on").eq(thisNum);
+
+	thisAddOn.toggleClass("on");
+	return false;
+});
+/* 토글클래스 end*/
 
 /* 레이어 팝업 세팅 start */
 export function setNormalPop(){
@@ -82,10 +95,9 @@ export function makeCal(){
 /* Calendar end*/
 
 /* 팝업연결 start */
-
 // $(document).on(
 // 	"click", ".click_show_evt", function(){
-// 		console.log(this)
+
 // 	var target=$(this).attr("data-link-show");
 // 	var targetShow=$("#"+target+"");
 // 	targetShow.stop().fadeIn("500");
@@ -111,7 +123,9 @@ export function makeCal(){
 
 // $(document).on(
 // 	"click", ".lay_pop_blind", function(){
+
 // 	$(".lay_pop_blind, .popup").stop().fadeOut("500");
+
 // 	bodyYesScroll();
 // 	return false;
 // });
@@ -128,7 +142,6 @@ $(document).on(
 	return false;
 });
 /* 프로필 이미지 선택 end */
-
 
 /* 키보드 start */
 /* 
@@ -623,7 +636,7 @@ $(document).on(
 	"change", ".agreed_all .must :checkbox", function(){
 	var thisCheck=$(".agreed_all .must :checkbox").not(".all").length;
 	var thisCheckNum=$(".agreed_all .must :checked").not(".all").length;
-		
+	
 	if($(this).hasClass("all")){
 		if($(this).is(":checked")){
 			$(".agreed_all .must :checkbox").prop("checked",true);
@@ -633,7 +646,7 @@ $(document).on(
 			$(".agr_btn").find("button").attr("disabled",true);
 		}
 	}else{
-		if(thisCheckNum === thisCheck){
+		if(thisCheckNum===thisCheck){
 			$(".agreed_all .must .all").prop("checked",true);
 			$(".agr_btn").find("button").attr("disabled",false);
 		}else{
@@ -643,6 +656,59 @@ $(document).on(
 	}
 })
 /* 일반 폼체크 end */
+
+/* pin 키보드 start */
+export function makePinPad(){
+	var pinInput=$(".pin_pass :password");
+
+	/* 랜덤값 만들기 start */
+	var numbers = [];
+	var pickNumbers = 10;
+
+	for(var insertCur = 0; insertCur < pickNumbers ; insertCur++){
+		numbers[insertCur] = Math.floor(Math.random() * 10) ;
+
+		for(var searchCur = 0; searchCur < insertCur; searchCur ++){
+			if(numbers[insertCur] === numbers[searchCur]){
+				insertCur--; 
+				break; 
+			}
+		}
+	}
+	/* 랜덤값 만들기 end */
+	
+	/* 랜덤값 버튼에 뿌리기 start */
+	for(var i=0; i<=pickNumbers; i++){
+		$(".pin_pass .key li").eq(i).children("button").text(numbers[i]);
+	}
+	/* 랜덤값 버튼에 뿌리기 end */
+
+	$(document).on(
+	"click", ".pin_pass button", function(){
+
+		if($(this).parent().hasClass("del")){//지우기
+
+			pinInput.val(pinInput.val().substr(0, pinInput.val().length -1)); 
+
+		}else if($(this).parent().hasClass("submit")){//입력완료
+			
+		}else{//숫자입력
+			var thisVal=$(this).text();
+			if(pinInput.val().length<5){
+				pinInput.val(pinInput.val()+thisVal);
+			}else{
+			}
+		}
+
+		$(".pin_pass .fake_key li").removeClass("on");
+
+		for(var i=0; i<=pinInput.val().length-1; i++){
+			$(".pin_pass .fake_key li").eq(i).addClass("on");
+		}
+	})
+		
+}
+/* pin 키보드 end */
 
 /* 제이쿼리ui 팝업창 시작 */
 export function makeUiPopup(UiPopupId,UiPopupMsg,dialogOpts){
@@ -677,7 +743,14 @@ export function onloadCall(){//화면 로드시 세팅 스크립트 실행
 	selectJs.makeSelect();
 	makeCal();
 	// setKey();
-	// setIndex();
+
+	if($(".pin_pass").length > 0){
+		makePinPad();
+	}	
+
+	if($(".index .mbanner").length > 0){
+		// setIndex();
+	}	
 };
 window.onload = onloadCall; 
 

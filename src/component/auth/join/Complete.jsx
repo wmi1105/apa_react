@@ -1,7 +1,7 @@
 import React from "react";
-import imgComp from '../../../image/sub/img_comp.png'
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
+import imgComp from 'image/sub/img_comp.png'
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 const Complete = (props) => {
   return (
     <>

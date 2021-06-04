@@ -6,9 +6,9 @@ const Header = ({headerType, children:title, history}) => {
 
     const moveBtn = useMemo(() => {
       if(headerType === 'close') 
-        return <p className="close"><span onClick={() => history.push('/index')}>화면 닫기</span></p>;
+        return <p className="close"><button type="button" onClick={() => history.push('/index')}>화면 닫기</button></p>;
       else if(headerType === 'back') 
-        return <p className="back"><span onClick={() => history.goBack()}>이전 페이지로 이동</span></p>
+        return <p className="back"><button type="button" onClick={() => history.goBack()}>이전 페이지로 이동</button></p>
     }, [headerType, history])
 
     return(

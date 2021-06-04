@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import $ from 'jquery';
 import Keyboard from 'react-virtual-keyboard';
 
-import{bodyYesScroll} from '../../js/common_pub.js';
+import{bodyYesScroll} from 'js/common_pub.js';
 
 var display = {
   'accept': '등록',

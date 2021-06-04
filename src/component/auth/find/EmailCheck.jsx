@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 
 const EmailCheck = ({ history }) => {
   return (

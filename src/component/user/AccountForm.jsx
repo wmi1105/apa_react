@@ -1,8 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { setContents } from "../../js/common_pub";
-import Footer from "../inc/Footer";
-import Header from "../inc/Header";
-import Top from "../inc/Top";
+import React from "react";
+import Header from "component/inc/Header";
+import Top from "component/inc/Top";
 import ChangePassword from "./ChangePassword";
 
 const AccountForm = ({page}) => {

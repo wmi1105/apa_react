@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../inc/Footer";
-import Section from "../inc/Section";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 
 const Terms = ({ itemVisible, onSumbit }) => {
   const [btnDisable, setBtnDisable] = useState(true);
@@ -49,16 +49,16 @@ const Terms = ({ itemVisible, onSumbit }) => {
   };
 
   const formSubmitHandler = () => {
-    const checkedValue = {...checked};
+    const checkedValue = { ...checked };
     delete checkedValue.all;
 
     onSumbit(checkedValue);
   };
 
   useEffect(() => {
-    if(checked.all) setBtnDisable(false);
+    if (checked.all) setBtnDisable(false);
     else setBtnDisable(true);
-  }, [checked])
+  }, [checked]);
 
   return (
     <>
@@ -96,9 +96,9 @@ const Terms = ({ itemVisible, onSumbit }) => {
                   <span className="fake"></span>
                   <span className="txt">어디아파 서비스 이용약관 (필수)</span>
                 </label>
-                <span className="move_span" onClick={() => itemVisible("tos")}>
+                <button type="button" onClick={() => itemVisible("tos")}>
                   약관보기
-                </span>
+                </button>
               </li>
               <li>
                 <label className="normal_check">
@@ -111,12 +111,9 @@ const Terms = ({ itemVisible, onSumbit }) => {
                   <span className="fake"></span>
                   <span className="txt">개인정보 처리방침 (필수)</span>
                 </label>
-                <span
-                  className="move_span"
-                  onClick={() => itemVisible("privacy")}
-                >
+                <button type="button" onClick={() => itemVisible("privacy")}>
                   약관보기
-                </span>
+                </button>
               </li>
               <li>
                 <label className="normal_check">
@@ -129,12 +126,12 @@ const Terms = ({ itemVisible, onSumbit }) => {
                   <span className="fake"></span>
                   <span className="txt">개인정보 수집 및 이용약관(필수)</span>
                 </label>
-                <span
-                  className="move_span"
+                <button
+                  type="button"
                   onClick={() => itemVisible("privacyAgree")}
                 >
                   약관보기
-                </span>
+                </button>
               </li>
               <li>
                 <label className="normal_check">
@@ -148,12 +145,9 @@ const Terms = ({ itemVisible, onSumbit }) => {
                   <span className="fake"></span>
                   <span className="txt">위치정보 서비스 이용약관 (필수)</span>
                 </label>
-                <span
-                  className="move_span"
-                  onClick={() => itemVisible("location")}
-                >
+                <button type="button" onClick={() => itemVisible("location")}>
                   약관보기
-                </span>
+                </button>
               </li>
               <li>
                 <label className="normal_check">
@@ -166,9 +160,9 @@ const Terms = ({ itemVisible, onSumbit }) => {
                   <span className="fake"></span>
                   <span className="txt">전자금융거래 이용약관 (필수)</span>
                 </label>
-                <span className="move_span" onClick={() => itemVisible("eft")}>
+                <button type="button" onClick={() => itemVisible("eft")}>
                   약관보기
-                </span>
+                </button>
               </li>
             </ul>
             <ul className="n_check_list">
@@ -179,19 +173,22 @@ const Terms = ({ itemVisible, onSumbit }) => {
                     title="동의합니다 선택"
                     name="marketing"
                     value={checked.marketing}
-                    onClick={() => setChecked({...checked, marketing:!checked.marketing})}
+                    onClick={() =>
+                      setChecked({ ...checked, marketing: !checked.marketing })
+                    }
                   />
                   <span className="fake"></span>
                   <span className="txt">마케팅 정보 수신 동의 (선택)</span>
                   {/* <Marketing /> */}
                 </label>
-                <span
-                  className="click_show_evt move_span"
+                <button
+                  type="button"
+                  className="click_show_evt"
                   data-link-show="pop_mar"
                   onClick={() => itemVisible("marketing")}
                 >
                   약관보기
-                </span>
+                </button>
               </li>
             </ul>
           </form>
@@ -200,7 +197,11 @@ const Terms = ({ itemVisible, onSumbit }) => {
 
       <Footer>
         <p className="btn50">
-          <button type="button" onClick={formSubmitHandler} disabled={btnDisable}>
+          <button
+            type="button"
+            onClick={formSubmitHandler}
+            disabled={btnDisable}
+          >
             동의하고 계속진행
           </button>
         </p>

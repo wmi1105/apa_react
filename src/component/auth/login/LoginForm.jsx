@@ -1,7 +1,6 @@
 import React from "react";
 
-import Top from "../../inc/Footer";
-import Header from "../../inc/Header";
+import Header from "component/inc/Header";
 import Login from "./Login";
 import LoginMail from "./LoginMail";
 import Sleep from "./Sleep";
@@ -14,7 +13,6 @@ const LoginForm = ({ page, onLoginSubmit, onResult }) => {
 
   return (
     <>
-      <Top />
       <div id="wrap" className="member">
 
         {page === "" && onResult !== "sleep" && (

@@ -1,6 +1,6 @@
 import React from "react";
 
-import img_cer from "../../../image/sub/img_cer.png";
+import img_cer from "image/sub/img_cer.png";
 
 const Identify = (props) => {
   return (

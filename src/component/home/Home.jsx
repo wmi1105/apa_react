@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SwipSlider from "../common/SwipSlider";
 
-import banner1 from "../../image/thum/img_mbanner_01.png";
-import banner2 from "../../image/thum/img_mbanner_02.png";
-import banner3 from "../../image/thum/img_mbanner_03.png";
-import heart from "../../image/common/icn_mmenu_heart.svg";
-import { setContents } from "../../js/common_pub";
+import banner1 from "image/thum/img_mbanner_01.png";
+import banner2 from "image/thum/img_mbanner_02.png";
+import banner3 from "image/thum/img_mbanner_03.png";
+import heart from "image/common/icn_mmenu_heart.svg";
+import { setContents } from "js/common_pub";
 
 const imageArr = [banner1, banner2, banner3];
 

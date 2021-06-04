@@ -14,15 +14,15 @@ const GoogleLoginBtn = ({children, onResponse}) => {
             cookiePolicy={'single_host_origin'}
             render={({ onClick }) => {
                 return (
-                  <a
-                    href="#"
+                  <button
+                    type="button"
                     onClick={(e) => {
                       e.preventDefault();
                       onClick();
                     }}
                   >
                     {children}
-                  </a>
+                  </button>
                 )}
             }
         />

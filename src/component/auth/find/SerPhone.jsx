@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import { phoneValueCheck } from "../../../js/common";
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
+import { phoneValueCheck } from "js/common";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 
 const SerPhone = ({ cerPhoneSubmit }) => {
   const [number, setNumber] = useState("");

@@ -19,7 +19,7 @@ export function makeSelect(){
 	/* 보여지는 셀렉트 태그들 추가 끝 */
 	
 	var theFakeSelect=$(".select_deco");//가짜 셀렉트를 선택
-	var fakeDt=$(".select_deco dt");//가짜 셀렉트의 dt를 선택
+	// var fakeDt=$(".select_deco dt");//가짜 셀렉트의 dt를 선택
 	var fakeDd=$(".select_deco dd");//가짜 셀렉트의 dd를 선택
 
 	for(var i=0; i<=theFakeSelect.length-1; i++){
@@ -105,105 +105,6 @@ $(document).on(
 		return false;
 	}
 );
-
-
 /* 보여지는 셀렉트 안쪽요소 클릭이벤트 끝 */
 
-////////////////////////////////웹접근성 코드들/////////////////////////////////
-
-/* 진짜 셀렉트 포커스시 다음 가짜셀렉트로 강제 포커스 이동 시작*/
-theSelect.focus(function(){
-	var thisNum=theSelect.index(this);
-	var thisSelect=theSelect.eq(thisNum);
-	var nextFake=thisSelect.parent().next(".select_deco").children("dt").children("a");
-
-	thisSelect.parent().blur();
-	nextFake.mouseover();
-})
-/* 진짜 셀렉트 포커스시 다음 가짜셀렉트로 강제 포커스 이동 끝 */
-
-/* 가짜 셀렉트 포커스이벤트 시작 */
-$(".select_deco dt").children().focus(function(){
-	var thisNum=$(".select_deco dt").children().index(this);
-	var thisDt=$(".select_deco dt").children().eq(thisNum);
-
-	$(".select_deco dt").blur();
-	thisDt.mouseover();
-})
-
-$(".select_deco dt").children().blur(function(){
-	var thisNum=$(".select_deco dt").children().index(this);
-	var thisDt=$(".select_deco dt").children().eq(thisNum);
-	
-	thisDt.mouseleave();
-})
-/* 가짜 셀렉트 포커스이벤트 끝 */
-
-/* 가짜 셀렉트 포커스상태에서 키보드 접근성 시작 */
-$(".select_deco dt").children().keydown(function(e){
-	var thisNum=$(".select_deco dt").children().index(this);
-	var thisDt=$(".select_deco dt").children().eq(thisNum);
-
-	if (e.keyCode == "9") {
-		thisDt.parent().click();
-	}
-
-	if (e.keyCode == "40") {
-		thisDt.parent().click();
-		thisDt.parent().next().children().children().eq(0).children().focus();
-		return false;
-	}
-	
-})
-/* 가짜 셀렉트 포커스상태에서 키보드 접근성 끝 */
-
-
-/* 가짜 셀렉트 안쪽 리스트 포커스이벤트 시작 */
-$(".select_deco>dd>ul>li").children().focus(function(){
-	var thisNum=$(".select_deco>dd>ul>li").children().index(this);
-	var thisLi=$(".select_deco>dd>ul>li").children().eq(thisNum);
-
-	thisLi.mouseover();
-})
-
-$(".select_deco>dd>ul>li").children().blur(function(){
-	var thisNum=$(".select_deco>dd>ul>li").children().index(this);
-	var thisLi=$(".select_deco>dd>ul>li").children().eq(thisNum);
-
-	thisLi.mouseleave();
-})
-/* 가짜 셀렉트 안쪽 리스트 포커스이벤트 끝 */
-
-/* 가짜 셀렉트 안쪽 리스트 포커스시 키보드접근성 시작 */
-$(".select_deco li:last-child a").keydown(function(e){
-	var thisNum=$(".select_deco li:last-child a").index(this);
-	var thisLi=$(".select_deco li:last-child a").eq(thisNum);
-
-	if (e.keyCode == "9") {
-	thisLi.parent().parent().parent().slideUp(speed);
-	}
-
-	if (e.keyCode == "40") {
-	thisLi.parent().parent().parent().slideUp(speed);
-	return false;
-	}
-	
-})
-
-$(".select_deco li a").keydown(function(e){
-	var thisNum=$(".select_deco li a").index(this);
-	var thisLi=$(".select_deco li a").eq(thisNum);
-
-	if (e.keyCode == "40") {
-	thisLi.parent().next().children().focus();
-	return false;
-	}
-
-	if (e.keyCode == "38") {
-	thisLi.parent().prev().children().focus();
-	return false;
-	}
-
-})
-/* 가짜 셀렉트 안쪽 리스트 포커스시 키보드접근성 끝 */
 /* 디자인셀럭트 end */

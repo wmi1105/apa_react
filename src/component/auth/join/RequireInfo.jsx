@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 
 const RequireInfo = ({onSubmit}) => {
   const [input, setInput] = useState({

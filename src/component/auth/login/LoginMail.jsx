@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { withRouter } from "react-router";
-import { emailValueCheck, passwordValueCheck } from "../../../js/common";
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
+import { emailValueCheck, passwordValueCheck } from "js/common";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
 
 const LoginMail = ({history, onLogin}) => {
   const passwordRef = useRef();
@@ -108,7 +108,7 @@ const LoginMail = ({history, onLogin}) => {
                 className="lost"
                 onClick={() => history.push("/find/password")}
               >
-                <a href={() => false}>비밀번호가 기억나지 않으세요?</a>
+                <button type="button">비밀번호가 기억나지 않으세요?</button>
               </p>
             </form>
           </div>

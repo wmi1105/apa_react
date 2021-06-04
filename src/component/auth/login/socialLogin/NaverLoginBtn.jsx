@@ -12,15 +12,15 @@ const NaverLoginBtn = ({children, onResponse}) => {
             onFailure = {(res) => onResponse('naver',false, res)}
             render={({ onClick }) => {
                 return (
-                  <a
-                    href="#"
+                  <button 
+                    type="button"
                     onClick={(e) => {
                       e.preventDefault();
                       onClick();
                     }}
                   >
                     {children}
-                  </a>
+                  </button>
                 )}
             }
         />

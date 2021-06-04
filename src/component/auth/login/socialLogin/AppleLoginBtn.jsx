@@ -11,15 +11,15 @@ const AppleLoginBtn = ({children, onResponse}) => {
       redirectURI={process.env.REACT_APP_LOGIN_REDIRECTURL}
       render={({ onClick }) => {
         return (
-          <a
-            href="#"
+          <button 
+            type="button"
             onClick={(e) => {
               e.preventDefault();
               onClick();
             }}
           >
             {children}
-          </a>
+          </button>
         )}
       }
     />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Header from "../inc/Header";
-import Top from "../inc/Top";
+import Header from "component/inc/Header";
 import TermsSection from "./items/TermsSection";
 import Terms from "./Terms";
 
@@ -15,8 +14,6 @@ const TermsFrom = ({onSumbit}) => {
 
   return (
     <>
-      <Top />
-
       <div id="wrap" className="member">
         <Header headerType="back">약관동의</Header>
         <Terms itemVisible={termsItemHandler} onSumbit={onSumbit}/>

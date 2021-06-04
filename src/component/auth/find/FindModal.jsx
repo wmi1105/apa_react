@@ -5,6 +5,13 @@ const FindModal = ({ targetId, onClickOk }) => {
     <>
       <section className="pop_cont">
         <p>
+          {targetId === "cer_mail" && (
+            <span>
+              이메일로 임시비밀번호가
+              <br />
+              발송되었습니다.
+            </span>
+          )}
           {targetId === "cer_phone" && (
             <span>
               휴대폰으로 인증번호가 전송되었습니다.

@@ -1,13 +1,13 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import icnNaver from "../../../image/common/icn_naver.svg";
-import Footer from "../../inc/Footer";
-import Section from "../../inc/Section";
-// import icnEmail from '../../../image/common/icn_email.svg';
-// import icnKakao from '../../../image/common/icn_kakao.svg';
-// import icnApple from '../../../image/common/icn_apple.svg';
-// import icnGoogle from '../../../image/common/icn_google.svg';
+import icnNaver from "image/common/icn_naver.svg";
+import Footer from "component/inc/Footer";
+import Section from "component/inc/Section";
+// import icnEmail from 'image/common/icn_email.svg';
+// import icnKakao from 'image/common/icn_kakao.svg';
+// import icnApple from 'image/common/icn_apple.svg';
+// import icnGoogle from 'mage/common/icn_google.svg';
 
 const OverAccount = ({history, onJoinOut}) => {
 

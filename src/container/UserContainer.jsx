@@ -1,6 +1,6 @@
 import React from 'react';
-import AccountForm from '../component/user/AccountForm';
-import UserForm from '../component/user/UserForm'
+import AccountForm from 'component/user/AccountForm';
+import UserForm from 'component/user/UserForm'
 
 const UserContainer = ({history, match}) => {
 

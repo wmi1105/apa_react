@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { modalHide, modalShow } from "../../js/common";
+import { modalHide, modalShow } from "js/common";
 
 const Modal = (props) => {
   const { targetId, visible } = props;
