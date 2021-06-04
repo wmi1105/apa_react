@@ -50,10 +50,10 @@ const Login = ({ history }) => {
             </ul>
             <ul className="links">
               <li>
-                <button type="button" onClick={() => history.push('/find/password')}>이메일 찾기</button>
+                <button type="button" onClick={() => history.push('/find/email')}>이메일 찾기</button>
               </li>
               <li>
-                <button type="button" onClick={() => history.push('/find/email')}>비밀번호 찾기</button>
+                <button type="button" onClick={() => history.push('/find/password')}>비밀번호 찾기</button>
               </li>
               <li>
                 <button type="button" onClick={() => history.push('/join/selectType')}>회원가입</button>

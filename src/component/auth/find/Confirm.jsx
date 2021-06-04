@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Footer from "component/inc/Footer";
 import Section from "component/inc/Section";
 
-const Confirm = ({ confirmSubmit, submitResult }) => {
+const Confirm = ({ confirmSubmit, confirmCheck }) => {
   const [number, setNumber] = useState("");
   const [btnDisable, setBtnDisable] = useState(true);
   const [inputCheck, setInputCheck] = useState(true);
@@ -16,12 +16,11 @@ const Confirm = ({ confirmSubmit, submitResult }) => {
       else setBtnDisable(true)
     }
 
-    
-
     if(!inputCheck) setInputCheck(true);
   };
 
   const onClickHandler = useCallback(() => {
+    setInputCheck(true);
     confirmSubmit(number);
   }, [number, confirmSubmit])
 
@@ -31,11 +30,8 @@ const Confirm = ({ confirmSubmit, submitResult }) => {
   }, [onClickHandler]);
 
   useEffect(() => {
-    if(submitResult && submitResult.type === 'confirm'){
-      const result = submitResult.result;
-      setInputCheck(result);
-    }
-  }, [submitResult])
+    if(confirmCheck) setInputCheck(confirmCheck.result);
+  }, [confirmCheck])
 
   return (
     <>

@@ -1,15 +1,15 @@
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 // import VirtualKeyboard from './component/common/VirtualKeyboard';
 
-import './css/master.css';
+import 'css/master.css';
 // import './css/swiper.css';
-import './css/common.css';
-import './css/sub.css';
-import './css/index.css';
+import 'css/common.css';
+import 'css/sub.css';
+import 'css/index.css';
 
-import  './js/common_pub.js';
-import './js/design_select.js';
+import  'js/common_pub.js';
+import 'js/design_select.js';
 
 import LoginContainer from './container/LoginContainer';
 import HomeForm from './component/home/HomeForm';
@@ -24,12 +24,6 @@ import TermsContainer from './container/TermsContainer';
 function App() {
   return (
     <div className="App">
-      {/* <div>
-        <ul>
-          <li><Link to="/main">main</Link></li>
-          <li><Link to="/join">join</Link></li>
-        </ul>
-      </div> */}
       <Route path="/" component={HomeForm} exact/>
       <Route path="/index" component={HomeForm} exact/>
       
@@ -42,8 +36,6 @@ function App() {
       <Route path="/terms" component={TermsContainer} exact/>
       <Route path="/join" component={JoinContainer} exact/>
       <Route path="/join/:type" component={JoinContainer} exact/>
-      {/* <Route path="/join/:type/:page" component={JoinContainer} /> */}
-
 
       <Route path="/identify" component={IdentifyContainer} exact/>
       
@@ -72,13 +64,12 @@ export default App;
 /join/complete    회원가입 완료
 /join/overAccount 본인인증 후 중복회원 있음
 /join/joinOut     탈퇴
-/user/info        사용자 정보
-/find/password/cerPhone
-/find/psssword/confirm
-/find/psssword/passwordCheck
-/find/email/cerPhone
-/find/email/confirm
-/find/email/emailCheck
+
+/find/password    비밀번호 찾기
+/find/email       이메일 찾기
+
+/user/info    //사용자 정보 조회, 수정
+/user/account //비밀번호 변경
 
 
 

@@ -8,15 +8,15 @@ const FindContainer = ({ match }) => {
     const returnObj = {
       type : type,
       result : true,
-      next : ''
+      data
     }
 
-    if(type === 'email'){
+    if(type === 'email'){   //비밀번호찾기 -> 이메일 입력
       returnObj['result'] = true;
-    }else if(type === 'phone'){
+    }else if(type === 'phone'){   //이메일찾기 -> 번호 입력
       returnObj['result'] = true;
       returnObj['next'] = 'confirm';
-    }else if(type === 'confirm'){
+    }else if(type === 'confirm'){   //이메일찾기 -> 인증번호 확인
       returnObj['result'] = true;
       returnObj['next'] = 'emailCheck';
     }

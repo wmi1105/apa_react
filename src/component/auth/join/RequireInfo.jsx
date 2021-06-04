@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "component/inc/Footer";
 import Section from "component/inc/Section";
 
-const RequireInfo = ({onSubmit}) => {
+const RequireInfo = ({ onSubmit }) => {
   const [input, setInput] = useState({
     name: "",
     phone: "",
@@ -16,25 +16,22 @@ const RequireInfo = ({onSubmit}) => {
     email: true,
     password: true,
     passwordCheck: true,
-  })
+  });
 
   const onClickHandler = () => {
     //onSubmit
-  }
+  };
 
   useEffect(() => {
-    const object = {...input};
+    const object = { ...input };
     delete object.name;
 
-    Object.keys(object).map(key => {
-      if(object[key] !== ''){
-        
+    Object.keys(object).map((key) => {
+      if (object[key] !== "") {
       }
       return null;
-    })
-    
-  }, [input])
-
+    });
+  }, [input]);
 
   return (
     <>
@@ -75,10 +72,9 @@ const RequireInfo = ({onSubmit}) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.phone && <p className="info">
-                  휴대폰번호 형식이 올바르지 않습니다.
-                </p>
-}
+                {!typeCheck.phone && (
+                  <p className="info">휴대폰번호 형식이 올바르지 않습니다.</p>
+                )}
               </li>
               <li>
                 <p>
@@ -97,7 +93,9 @@ const RequireInfo = ({onSubmit}) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.email && <p className="info">이메일 형식이 올바르지 않습니다.</p>}
+                {!typeCheck.email && (
+                  <p className="info">이메일 형식이 올바르지 않습니다.</p>
+                )}
               </li>
               <li>
                 <p>
@@ -116,7 +114,9 @@ const RequireInfo = ({onSubmit}) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.password && <p className="info">8~16자리 이상 입력해주세요. </p>}
+                {!typeCheck.password && (
+                  <p className="info">8~16자리 이상 입력해주세요. </p>
+                )}
               </li>
               <li>
                 <p>
@@ -135,7 +135,9 @@ const RequireInfo = ({onSubmit}) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.passwordCheck && <p className="info">비밀번호가 일치하지 않습니다.</p>}
+                {!typeCheck.passwordCheck && (
+                  <p className="info">비밀번호가 일치하지 않습니다.</p>
+                )}
               </li>
             </ul>
           </form>
