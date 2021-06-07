@@ -5,7 +5,7 @@ const TermsContainer = ({history}) => {
 
 
     const termSubmit = (value) => {
-        history.push('/identify');   //약관동의 후 본인인증 페이지로 이동
+        history.push('/identify/join');   //약관동의 후 본인인증 페이지로 이동
     }
 
     return(

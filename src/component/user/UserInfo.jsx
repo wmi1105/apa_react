@@ -1,7 +1,8 @@
 import React from "react";
 import Section from "component/inc/Section";
+import Footer from "component/inc/Footer";
 
-const UserInfo = ({ modInfo }) => {
+const UserInfo = ({ userInfo, modInfo }) => {
 
   return (
     <>
@@ -25,7 +26,7 @@ const UserInfo = ({ modInfo }) => {
                 type="button"
                 className="click_show_evt"
                 data-link-show="phone_mod"
-                onClick={() => modInfo("phone_mod")}
+                onClick={() => modInfo("phone")}
               >
                 수정하기
               </button>
@@ -37,7 +38,7 @@ const UserInfo = ({ modInfo }) => {
                 type="button"
                 className="click_show_evt"
                 data-link-show="email_mod"
-                onClick={() => modInfo("email_mod")}
+                onClick={() => modInfo("email")}
               >
                 수정하기
               </button>
@@ -45,7 +46,7 @@ const UserInfo = ({ modInfo }) => {
             <li>
               <strong>비밀번호</strong>
               <p>********</p>
-              <button type="button">수정하기</button>
+              <button type="button" onClick={() => modInfo("password")}>수정하기</button>
             </li>
             <li>
               <strong>연동계정</strong>
@@ -65,13 +66,13 @@ const UserInfo = ({ modInfo }) => {
               <strong>생년월일</strong>
               <p>2020.08.07</p>
               {/* <p className="empty">생년월일을 입력해 주세요.</p> */}
-              <button type="button">수정하기</button>
+              <button type="button" onClick={() => modInfo("birth")}>수정하기</button>
             </li>
             <li>
               <strong>주소</strong>
               <p>경기 성남시 분당구 황새울로300번길 99(로얄팰리스)604호</p>
               {/* <p className="empty">주소를 입력해 주세요.</p> */}
-              <button type="button" onClick={() => modInfo("address_mod")}>수정하기</button>
+              <button type="button" onClick={() => modInfo("address")}>수정하기</button>
             </li>
             <li>
               <strong>문진프로필</strong>
@@ -84,6 +85,12 @@ const UserInfo = ({ modInfo }) => {
           </ul>
         </div>
       </Section>
+
+      <Footer>
+        <p className="btn50">
+          <button type="button" onClick={null}>저장하기</button>
+        </p>
+      </Footer>
     </>
   );
 };

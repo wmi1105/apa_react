@@ -3,6 +3,10 @@ import IentifyForm from 'component/auth/identification/IentifyForm';
 
 const IdentifyContainer = ({history, match}) => {
 
+    const type = match.params.type;
+    // type = join : 회원가입 중 인증
+    // type = userPassword : 비밀번호 변경 중 인증
+
     const setCheck = () => {
 
         //인증완료
@@ -13,16 +17,19 @@ const IdentifyContainer = ({history, match}) => {
 
 
     const doneCheck = () => {
-        //정상
+        //가입 정상
         history.push('/join/info')
 
-        //중복계정
+        //가입 중복계정
         history.push('/join/overAccount')
+
+        //전화번호 변경
+        //history.push(???)
     }
     
 
     return(
-        <IentifyForm/>
+        <IentifyForm setCheck={setCheck}/>
     )
 }
 

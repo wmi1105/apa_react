@@ -17,7 +17,7 @@ const SelectType = ({ history }) => {
         </dl>
         <ul className="join_select">
           <li className="mail">
-            <button type="button" onClick={() => history.push('./terms')}>이메일로 회원가입</button>
+            <button type="button" onClick={() => history.push('/terms')}>이메일로 회원가입</button>
           </li>
           <li className="kakao">
             <button type="button">카카오로 회원가입</button>

@@ -1,9 +1,6 @@
 import React from "react";
-import heart from "image/common/icn_mmenu_heart.svg";
-import icn_mmenu_remote from "image/common/icn_mmenu_remote.svg";
-import icn_mmenu_doc from "image/common/icn_mmenu_doc.svg";
-import icn_mmenu_hos from "image/common/icn_mmenu_hos.svg";
-import icn_mmenu_drug from "image/common/icn_mmenu_drug.svg";
+
+import MyMenuSvg from "./MyMenuSvg";
 
 const MyMenu = (props) => {
   return (
@@ -15,7 +12,7 @@ const MyMenu = (props) => {
             <button type="button">
               <strong className="icon">
                 <span>
-                  <img src={heart} alt="" />
+                  <MyMenuSvg id='heart'/>
                 </span>
               </strong>
               <span>내 몸 관리</span>
@@ -25,7 +22,7 @@ const MyMenu = (props) => {
             <button type="button">
               <strong className="icon">
                 <span>
-                  <img src={icn_mmenu_remote} alt="" />
+                  <MyMenuSvg id='icn_mmenu_remote'/>
                 </span>
               </strong>
               <span>비대면 진료</span>
@@ -35,7 +32,7 @@ const MyMenu = (props) => {
             <button type="button">
               <strong className="icon">
                 <span>
-                  <img src={icn_mmenu_doc} alt="" />
+                  <MyMenuSvg id='icn_mmenu_doc'/>
                 </span>
               </strong>
               <span>나의 문서함</span>
@@ -45,7 +42,7 @@ const MyMenu = (props) => {
             <button type="button">
               <strong className="icon">
                 <span>
-                  <img src={icn_mmenu_hos} alt="" />
+                  <MyMenuSvg id='icn_mmenu_hos'/>
                 </span>
               </strong>
               <span>나의 병원</span>
@@ -55,7 +52,7 @@ const MyMenu = (props) => {
             <button type="button">
               <strong className="icon">
                 <span>
-                  <img src={icn_mmenu_drug} alt="" />
+                  <MyMenuSvg id='icn_mmenu_drug'/>
                 </span>
               </strong>
               <span>나의 약국</span>

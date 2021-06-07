@@ -33,6 +33,15 @@ const RequireInfo = ({ onSubmit }) => {
     });
   }, [input]);
 
+  useEffect(() => {
+    setTypeCheck({
+      phone: true,
+      email: true,
+      password: true,
+      passwordCheck: true,
+    })
+  }, [])
+
   return (
     <>
       <Section>

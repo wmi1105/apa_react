@@ -213,7 +213,7 @@ div.select_box{display:inline-block; width:100%; min-width:90px;}
 .btn50 button:disabled{background:#C3C3C3;}
 
 /* 팝업 */
-.popup{display:none; position:fixed; z-index:100; background:#fff; box-sizing:border-box; overflow:hidden;}
+.popup{display:none; position:fixed; z-index:100; background:#fff; box-sizing:border-box; /* overflow:hidden; */}
 .popup .pop_close{position:absolute; top:20px; right:20px;}
 .popup .pop_close button{display:block; width:20px; height:20px; text-indent:-999em; overflow:hidden; background:url(image/common/icn_close_b.svg) no-repeat 0 0; background-size:100% auto; border:0 none;}
 .bottom_pop{bottom:0; left:0; width:100%; border-radius:30px 30px 0 0;}

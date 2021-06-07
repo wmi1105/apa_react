@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { emailValueCheck } from "js/common";
+import DatePickerJS from "component/common/DatePickerJS";
 
 const UserInfoModal = ({ targetId, onClickCancel, onClickOk }) => {
   const [input, setInput] = useState("");
-  
+  const [valueCheck, setValuecheck]= useState(null);
+
+  const onClickHandler = useCallback(() => {
+    if(targetId === 'email_mod'){
+      setValuecheck(emailValueCheck(input));
+    }else{
+      setValuecheck(true);
+    } 
+  }, [targetId, input])
+
+  const onSubmit = e => {
+    onClickHandler();
+    e.preventDefault();
+  }
+
+  useEffect(() => {
+    if(valueCheck) onClickOk({data : input});
+  }, [valueCheck, input, onClickOk])
+
   return (
     <>
       <section className="pop_cont">
@@ -16,7 +36,7 @@ const UserInfoModal = ({ targetId, onClickCancel, onClickOk }) => {
         )}
 
         {targetId === "email_mod" && (
-          <form action="#" method="post">
+          <form action="#" method="post" onSubmit={onSubmit}>
             <div className="input">
               {/* input start */}
               <strong>이메일 주소 수정</strong>
@@ -28,10 +48,28 @@ const UserInfoModal = ({ targetId, onClickCancel, onClickOk }) => {
                     title="이메일 입력"
                     placeholder="이메일을 입력해 주세요."
                     value={input}
-                    onChange={(e) => setInput(e.target.value)}
+                    onChange={(e) =>{
+                        setInput(e.target.value);
+                        setValuecheck(null);
+                      }}
                     // readOnly
                   />
-                  <p className="info alert">이메일 형식이 올바르지 않습니다.</p>
+                  {valueCheck === false && <p className="info">이메일 형식이 올바르지 않습니다.</p>}
+                </li>
+              </ul>
+            </div>
+            {/* input end */}
+          </form>
+        )}
+
+        {targetId === "birth_mod" && (
+          <form action="#" method="post">
+            <div className="input">
+              {/* input start */}
+              <strong>생년월일 수정</strong>
+              <ul className="inputs">
+                <li>
+                  <DatePickerJS defaultDate='2020.08.07' changeDate={setInput}/>
                 </li>
               </ul>
             </div>
@@ -54,7 +92,7 @@ const UserInfoModal = ({ targetId, onClickCancel, onClickOk }) => {
         </li>
         <li>
           <p className="btn">
-            <button type="button" onClick={onClickOk}>
+            <button type="button" onClick={onClickHandler}>
               확인
             </button>
           </p>

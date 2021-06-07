@@ -63,7 +63,7 @@ const Postcode = ({ setVisible, allAddress }) => {
             <header id="header" className={`close_header`}>
               <h1>주소검색하기</h1>
               <p className="close">
-                <span onClick={() => setVisible(false)}>화면 닫기</span>
+                <button type="button" onClick={() => setVisible(false)}>화면 닫기</button>
               </p>
             </header>
 
@@ -87,13 +87,7 @@ const Postcode = ({ setVisible, allAddress }) => {
 
             <Section>
               {/* 상세주소 입력 */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#fff",
-                }}
-              >
+              <div id="contents">
                 <PostDetail
                   post={post}
                   address={address}

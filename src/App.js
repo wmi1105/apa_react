@@ -37,7 +37,7 @@ function App() {
       <Route path="/join" component={JoinContainer} exact/>
       <Route path="/join/:type" component={JoinContainer} exact/>
 
-      <Route path="/identify" component={IdentifyContainer} exact/>
+      <Route path="/identify/:type" component={IdentifyContainer} exact/>
       
       <Route path="/user/:type" component={UserContainer} exact/>
       <Route path="/user/:type/:page" component={UserContainer}/>

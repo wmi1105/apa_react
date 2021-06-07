@@ -1,6 +1,6 @@
 ﻿import $ from 'jquery';
 import * as selectJs from './design_select.js';
-import {hangulJs} from './hangul';
+// import {hangulJs} from './hangul';
 // import {keyJs} from './jquery.keyboard';
 
 /* 바디스크롤 방지 start */
@@ -546,7 +546,7 @@ $(document).on(
 	var thisInput=$(this).parents("form").find(":text").length;
 	var thisInputPass=$(this).parents("form").find(".pass").length;
 	
-	if(thisInput==thisInputPass){
+	if(thisInput===thisInputPass){
 		$(".pro_b_form .last_btn button").removeClass("disabled");
 		$(".pro_b_form .last_btn button").attr("data-link-show","profile_save");
 	}else{
@@ -560,7 +560,7 @@ export function gotoEmpty(){
 	var thisText=$(".pro_b_form :text").not(".pass").eq(0);
 	var thisImg=$(".add_big_btn a img").length;
 
-	if(thisImg == 0){
+	if(thisImg === 0){
 		$("html,body").scrollTop($(".add_big_btn").offset().top-$("#header").innerHeight());
 		$(".add_big_btn a").click();
 	}else{
@@ -581,13 +581,13 @@ $(document).on(
 		var thisText=$(".pro_b_form :text").not(".pass").eq(0).closest("td").prev("th").find("p").text();
 		var thisImg=$(".add_big_btn a img").length;
 
-		if(thisImg == 0){
+		if(thisImg === 0){
 			thisText="사진";
 			$("#profile_more .pop_cont p span").text("을 등록해 주세요.");
 		}else{
-			if(thisText=="이름"){
+			if(thisText === "이름"){
 				$("#profile_more .pop_cont p span").text("을 입력해 주세요.");
-			}else if(thisText=="생년월일"){
+			}else if(thisText === "생년월일"){
 				$("#profile_more .pop_cont p span").text("을 입력해 주세요.");
 			}else{
 				$("#profile_more .pop_cont p span").text("를 입력해 주세요.");

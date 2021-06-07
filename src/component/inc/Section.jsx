@@ -4,7 +4,8 @@ import { setContents } from 'js/common_pub';
 const Section = (props) => {
     const [containerSize, setContainerSize] = useState(null);
     useEffect(() => {
-        setContainerSize(setContents());
+        const size = setContents();
+        setContainerSize({...size, backgroundColor : '#fff'});
     }, [])
 
     return(

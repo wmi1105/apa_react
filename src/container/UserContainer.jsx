@@ -1,5 +1,4 @@
 import React from 'react';
-import AccountForm from 'component/user/AccountForm';
 import UserForm from 'component/user/UserForm'
 
 const UserContainer = ({history, match}) => {
@@ -20,8 +19,7 @@ const UserContainer = ({history, match}) => {
 
     return(
         <>
-        {type === 'info' && <UserForm page={page} modUserInfo={modUserInfo}/>}
-        {type === 'account' && <AccountForm page={page} />}
+        {type === 'info' && <UserForm page={page} userInfo={null} modUserInfo={modUserInfo}/>}
         </>
     )
 }

@@ -40,14 +40,14 @@ const HomeForm = ({ history }) => {
 
         <Section>
           <div id="contents">
-            <Contents />
-            <MyMenu />
-            <PublicBanner />
-            <Weather />
-            <HealthNTalk />
-            <MarketingBanner />
-            <Disease />
-            <Info />
+            <Contents />  {/* 운영 컨텐츠 */}
+            <MyMenu />    {/* 마이메뉴 */}
+            <PublicBanner />  {/* 공익광고 */}
+            <Weather /> {/* k weather */}
+            <HealthNTalk /> {/* 건강N톡 컨텐츠 */}
+            <MarketingBanner /> {/* 마케팅 베너 */}
+            <Disease /> {/* 신규질환 소개 */}
+            <Info />  {/* 어디아파 알아보기 */}
           </div>
 
           <p className="ai_Clinic">

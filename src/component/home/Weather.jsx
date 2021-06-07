@@ -1,8 +1,7 @@
 import React from "react";
 
 import icon_weather_1 from "image/sub/icon_weather_1.svg";
-import { weatherClose, weatherOpen } from "js";
-
+import { weatherClose, weatherOpen } from "js/index";
 
 const Weather = (props) => {
   return (
@@ -17,7 +16,7 @@ const Weather = (props) => {
             <img src={icon_weather_1} alt="" />
           </p>
           <p>
-            <span>홍길동</span> 님, <span>호흡기계 질환에 안 좋은</span>{" "}
+            <span>홍길동</span> 님, <span>호흡기계 질환에 안 좋은</span>
             날씨입니다.
           </p>
           <p className="tem">
