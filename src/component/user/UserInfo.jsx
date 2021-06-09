@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "component/inc/Section";
-import Footer from "component/inc/Footer";
+import FixButton from "component/inc/FixButton";
 
 const UserInfo = ({ userInfo, modInfo }) => {
 
@@ -86,11 +86,20 @@ const UserInfo = ({ userInfo, modInfo }) => {
         </div>
       </Section>
 
-      <Footer>
-        <p className="btn50">
-          <button type="button" onClick={null}>저장하기</button>
-        </p>
-      </Footer>
+      <FixButton
+        label="저장하기"
+        btnDisable = {true}
+        onClick={null}
+      />
+
+      {/* <Modal targetId={modalData.target_id} visible={modalVisible}>
+        <UserInfoModal
+          targetId={modalData.target_id}
+          defaultValue={modalData.defaultValue}
+          onClickOk={modalOk}
+          onClickCancel={() => setModalVisible(false)}
+        />
+      </Modal> */}
     </>
   );
 };

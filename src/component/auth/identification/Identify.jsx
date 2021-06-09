@@ -1,9 +1,13 @@
 import React from "react";
 
 import img_cer from "image/sub/img_cer.png";
+import Section from "component/inc/Section";
+import FixButton from "component/inc/FixButton";
 
-const Identify = (props) => {
+const Identify = ({setCheck}) => {
   return (
+    <>
+    <Section>
     <div id="contents">
       <dl className="first_info">
         <dt>본인인증</dt>
@@ -23,6 +27,15 @@ const Identify = (props) => {
         <img src={img_cer} alt="" />
       </p>
     </div>
+    </Section>
+
+
+    <FixButton
+        label="본인인증하기"
+        btnDisable={false}
+        onClick={setCheck}
+      />
+  </>
   );
 };
 

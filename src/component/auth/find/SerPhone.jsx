@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { phoneValueCheck } from "js/common";
-import Footer from "component/inc/Footer";
 import Section from "component/inc/Section";
+import FixButton from "component/inc/FixButton";
 
 const SerPhone = ({ cerPhoneSubmit }) => {
   const [number, setNumber] = useState("");
@@ -79,7 +79,7 @@ const SerPhone = ({ cerPhoneSubmit }) => {
         </div>
       </Section>
 
-      <Footer>
+      {/* <Footer>
         <p className="btn50">
           <button
             type="button"
@@ -92,7 +92,17 @@ const SerPhone = ({ cerPhoneSubmit }) => {
             인증번호 요청
           </button>
         </p>
-      </Footer>
+      </Footer> */}
+
+      <FixButton
+        label="인증번호 요청"
+        btnDisable={btnDisable}
+        onClick={onClickHandler}
+        btnProps =  {{
+          className:"click_show_evt",
+          'data-link-show':"cer_phone"
+        }}
+      />
     </>
   );
 };

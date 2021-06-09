@@ -1,7 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
-import Footer from "component/inc/Footer";
+
 import Section from "component/inc/Section";
+import FixButton from "component/inc/FixButton";
 
 const EmailCheck = ({ history }) => {
   return (
@@ -21,13 +22,13 @@ const EmailCheck = ({ history }) => {
           </ul>
         </div>
       </Section>
-      <Footer>
-        <p className="btn50">
-          <button type="button" onClick={() => history.push("/login/email")}>
-            로그인 하기
-          </button>
-        </p>
-      </Footer>
+      
+      <FixButton
+        label="로그인 하기"
+        btnDisable={false}
+        onClick={ history.push("/login/email")}
+        btnProps={{}}
+      />
     </>
   );
 };

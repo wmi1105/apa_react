@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { emailValueCheck } from "js/common";
-import Footer from "component/inc/Footer";
 import Section from "component/inc/Section";
+import FixButton from "component/inc/FixButton";
 
-const SerEmail = ({ cerEmailSubmit }) => {
+const SerEmail = ({ onSubmit }) => {
   const [input, setInput] = useState("");
   const [inputCheck, setInputCheck] = useState(true);
   const [btnDisable, setBtnDisable] = useState(true);
@@ -36,16 +36,13 @@ const SerEmail = ({ cerEmailSubmit }) => {
     //   return false;
     // }
 
-    cerEmailSubmit(input);
+    onSubmit(input);
+  }, [input, onSubmit]);
 
-  }, [input, cerEmailSubmit]);
-
-  const formSubmit = useCallback(
-    (e) => {
+  const formSubmit = useCallback((e) => {
       onClickHandler();
       e.preventDefault();
-    },
-    [onClickHandler]
+    }, [onClickHandler]
   );
 
   return (
@@ -89,19 +86,15 @@ const SerEmail = ({ cerEmailSubmit }) => {
         </div>
       </Section>
 
-      <Footer>
-        <p className="btn50">
-          <button
-            type="button"
-            className="click_show_evt"
-            data-link-show="cer_mail"
-            onClick={onClickHandler}
-            disabled={btnDisable}
-          >
-            비밀번호 요청
-          </button>
-        </p>
-      </Footer>
+      <FixButton
+        label="비밀번호 요청"
+        btnDisable={btnDisable}
+        onClick={onClickHandler}
+        btnProps={{
+          'className':"click_show_evt",
+          'data-link-show;':"cer_mail"
+        }}
+      />
     </>
   );
 };

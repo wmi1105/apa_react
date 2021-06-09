@@ -87,7 +87,7 @@ $(document).on(
 $(document).on(
 	"click", ".select_deco>dd>ul>li", 
 	function(){
-		var fakeUl=$(".select_deco>dd>ul");
+		// var fakeUl=$(".select_deco>dd>ul");
 		var fakeLi=$(".select_deco>dd>ul>li");
 		var thisNum=fakeLi.index(this);
 		var thisNum2=$(this).parent().children().index(this);

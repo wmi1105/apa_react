@@ -1,55 +1,52 @@
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route } from "react-router-dom";
+import DynamicRoute from "react-dynamic-route";
 
-// import VirtualKeyboard from './component/common/VirtualKeyboard';
-
-import 'css/master.css';
+import "css/master.css";
 // import './css/swiper.css';
-import 'css/common.css';
-import 'css/sub.css';
-import 'css/index.css';
+import "css/common.css";
+import "css/sub.css";
+import "css/index.css";
 
-import  'js/common_pub.js';
-import 'js/design_select.js';
+import "js/common_pub.js";
+import "js/design_select.js";
+import Home from "pages/homePage";
 
-import LoginContainer from './container/LoginContainer';
-import HomeForm from './component/home/HomeForm';
-import FindContainer from './container/FindContainer';
-import JoinContainer from './container/JoinContainer';
-import IdentifyContainer from './container/IdentifyContainer';
-import UserContainer from './container/UserContainer';
-import TermsContainer from './container/TermsContainer';
-// import './js/jquery.keyboard.js';
-// import './js/jquery.keyboard.extension-all';
 
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={HomeForm} exact/>
-      <Route path="/index" component={HomeForm} exact/>
-      
-      <Route path="/login" component={LoginContainer} exact/>
-      <Route path="/login/:type" component={LoginContainer}/>
-
-      <Route path="/find/:type" component={FindContainer}/>
-
-
-      <Route path="/terms" component={TermsContainer} exact/>
-      <Route path="/join" component={JoinContainer} exact/>
-      <Route path="/join/:type" component={JoinContainer} exact/>
-
-      <Route path="/identify/:type" component={IdentifyContainer} exact/>
-      
-      <Route path="/user/:type" component={UserContainer} exact/>
-      <Route path="/user/:type/:page" component={UserContainer}/>
-
-      
+      <BrowserRouter>
+      <Route path="/" component={Home} exact/>
+        <DynamicRoute
+          page={(path) =>
+            import(`./pages${path}Page`)
+              .then((module) => module.default)
+              .catch((e) => {
+                if (/not find module/.test(e.message)) {
+                  return import("pages/error/404").then((module) => module.default);
+                }
+                throw e;
+              })
+          }
+          // loading={null}
+          // props={{
+          //   someProp1,
+          //   someProp2,  // `someProp1` and `someProp2` are transfered to `module.dedault` above finally
+          // }}
+          onError={(e, history) => {
+            if (/Loading chunk \d+ failed/.test(e.message)) {
+              window.location.reload();
+              return;
+            }
+            throw e;
+          }}
+        />
+    </BrowserRouter>
     </div>
   );
 }
 
 export default App;
-
-
 
 /* 
 

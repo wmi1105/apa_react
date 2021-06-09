@@ -4,7 +4,7 @@ import Modal from "component/inc/Modal";
 import Postcode from "component/inc/PostCode";
 import UserInfo from "./UserInfo";
 import UserInfoModal from "./UserInfoModal";
-import ModPassword from "./ModPassword";
+// import ModPassword from "./ModPassword";
 import { withRouter } from "react-router";
 
 const modalId = {
@@ -78,7 +78,7 @@ const UserForm = ({history, userInfo, modUserInfo}) => {
 
     {/* 주소검색 */}
       {postVisible && <Postcode setVisible={(val) => setPostVisible(val)} allAddress={allAddress}/>}
-      {modPassVisible && <ModPassword setVisible={val => setModPassVisible(val)} savePassword = {savePassword}/>}
+      {/* {modPassVisible && <ModPassword setVisible={val => setModPassVisible(val)} savePassword = {savePassword}/>} */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Footer from "component/inc/Footer";
 import Section from "component/inc/Section";
+import FixButton from "component/inc/FixButton";
 
 const Confirm = ({ confirmSubmit, confirmCheck }) => {
   const [number, setNumber] = useState("");
@@ -69,19 +69,15 @@ const Confirm = ({ confirmSubmit, confirmCheck }) => {
         </div>
       </Section>
 
-      <Footer>
-        <p className="btn50">
-          <button
-            type="button"
-            className="click_show_evt"
-            data-link-show="cer_phone2"
-            disabled={btnDisable}
-            onClick={onClickHandler}
-          >
-            인증하기
-          </button>
-        </p>
-      </Footer>
+      <FixButton
+        label="인증하기"
+        btnDisable={btnDisable}
+        onClick={onClickHandler}
+        btnProps = {{
+          'className':"click_show_evt",
+          'data-link-show':"cer_phone2"
+        }}
+      />
     </>
   );
 };
