@@ -10,7 +10,7 @@ const FixButton = (props) => {
             <p className="btn50">
             <button 
                 type="button" 
-                dissabled={btnDisable} 
+                disabled={btnDisable} 
                 onClick={onClick}
                 {...props.btnProps}
             >{label}</button>

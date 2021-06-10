@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import FixChkButton from "component/inc/FixChkButton";
 
 const JoinOut = (props) => {
   return (
@@ -22,22 +22,11 @@ const JoinOut = (props) => {
         </div>
       </Section>
 
-      <footer id="footer" className="footer_area last_btn">
-        <div className="agr_btn">
-          <div className="agr_check">
-            <label className="normal_check">
-              <input type="checkbox" title="동의합니다 선택" />
-              <span className="fake"></span>
-              <span className="txt">모든 정보를 삭제하는 것에 동의합니다.</span>
-            </label>
-          </div>
-          <p className="btn50">
-            <button type="button" disabled>
-              탈퇴하기
-            </button>
-          </p>
-        </div>
-      </footer>
+      <FixChkButton 
+        btnLabel = "탈퇴하기"
+        chkLabel = "모든 정보를 삭제하는 것에 동의합니다."
+        onClick={null}
+      />
     </>
   );
 };
