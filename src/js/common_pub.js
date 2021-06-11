@@ -1,8 +1,5 @@
 ﻿import $ from 'jquery';
 import * as selectJs from './design_select.js';
-// import {hangulJs} from './hangul';
-// import {keyJs} from './jquery.keyboard';
-
 /* 바디스크롤 방지 start */
 var oldScrollNum=$(document).scrollTop();
 export function bodyNoScroll(){
@@ -28,17 +25,14 @@ export function setContents(){
 	headerH = (headerH) ? headerH : 0;
 	fooderH = (fooderH) ? fooderH : 0;
 
-	// $("#container").css("height",windowH-(headerH+fooderH));
-	// $("#container").css("top",headerH+1);
-	
 	const size = {
 		height : windowH-(headerH+fooderH),
 		top : headerH+1
 	}
 
 	return size;
-}
 
+}
 /* 화면 컨텐츠 높이 세팅 end */
 
 /* 토글클래스 start */
@@ -131,6 +125,42 @@ export function makeCal(){
 // });
 /* 팝업연결 end */
 
+/* 전체체크 start */
+$(document).on(
+	"change", ".agr_btn :checkbox", function(){
+		
+	if($(this).is(":checked")){
+		$(this).closest(".agr_btn").find("button").attr("disabled",false);
+	}else{
+		$(this).closest(".agr_btn").find("button").attr("disabled",true);
+	}	
+})
+
+$(document).on(
+	"change", ".n_check_list.must :checkbox", function(){
+	var thisCheck=$(".n_check_list.must :checkbox").not(".all").length;
+	var thisCheckNum=$(".n_check_list.must :checked").not(".all").length;
+	
+	if($(this).hasClass("all")){
+		if($(this).is(":checked")){
+			$(".n_check_list.must :checkbox").prop("checked",true);
+			$(".agr_btn").find("button").attr("disabled",false);
+		}else{
+			$(".n_check_list.must :checkbox").prop("checked",false);
+			$(".agr_btn").find("button").attr("disabled",true);
+		}
+	}else{
+		if(thisCheckNum==thisCheck){
+			$(".n_check_list.must .all").prop("checked",true);
+			$(".agr_btn").find("button").attr("disabled",false);
+		}else{
+			$(".n_check_list.must .all").prop("checked",false);
+			$(".agr_btn").find("button").attr("disabled",true);
+		}
+	}
+})
+/* 전체체크 end */
+
 /* 프로필 이미지 선택 start */
 $(document).on(
 	"click", "#profile_add .pe_list li a", function(){
@@ -143,352 +173,75 @@ $(document).on(
 });
 /* 프로필 이미지 선택 end */
 
-/* 키보드 start */
-/* 
-export function setKey(){
+/* ai문진 글자영역 컨트롤 start */
+$(document).on(
+	"keydown keyup", ".check_ai.textarea textarea", function(){
+	$(this).height(1).height( $(this).prop("scrollHeight")-28 );	
+});
 
-	var hanGulVal;
-	var theCompHangul;
-	var hanGulIndex;
-	var hanGulArr=new Array;
+$(document).on(
+	"focus", ".check_ai.textarea textarea", function(){
+	$("#header").addClass("hideTop");
+	$(".check_ai.textarea :radio,.check_ai.textarea :checkbox").prop("checked",false);
+});
 
-	function makeHangul(){
-		hanGulVal=$(".ui-keyboard-preview-wrapper input").val();
-		hanGulArr=hangulJs.Hangul.disassemble(hanGulVal);
-		theCompHangul=hangulJs.Hangul.assemble(hanGulArr);
-		$(".ui-keyboard-preview-wrapper input").eq(hanGulIndex).val(theCompHangul);
+$(document).on(
+	"blur", ".check_ai.textarea textarea", function(){
+	$("#header").removeClass("hideTop");
+});
+
+$(document).on(
+	"click", ".ai :reset", function(){
+	$(".check_ai.textarea textarea").height(14);	
+	$(".select_side .img img").hide();
+	$(".select_side .img img").eq(0).show();
+});
+/* ai문진 글자영역 컨트롤 end */
+
+/* ai문진 왼/오른쪽 컨트롤 start */
+$(document).on(
+	"change", ".select_side :radio", function(){
+	var thisNum=$(this).parents("li").index();
+	$(".select_side .img img").hide();
+	$(".select_side .img img").eq(thisNum).show();
+});
+/* ai문진 왼/오른쪽 컨트롤 end */
+
+/* ai문진 기간선택 start */
+$(document).on(
+	"change", ".select_four select", function(){
+	var thisSelect=$(this).closest("li").index();
+	var thisText=$(this).children("option:selected").text();
+
+	if(thisText=="0"){
+		$(".select_time li").eq(thisSelect).hide();
+	}else{
+		$(".select_time li").eq(thisSelect).find("span:first").text(thisText);
+		$(".select_time li").eq(thisSelect).show();
 	}
+});
+/* ai문진 기간선택 end */
 
-	function hideBlind(){
-		var blind=$(".lay_pop_blind");
-		var thePop=$(".popup :visible").length;
-
-		if(thePop > 0){
-			$(".lay_pop_blind").stop().fadeIn("500");
-		}else{
-			$(".lay_pop_blind").stop().fadeOut("500");
-		}
-	}
-
-	$(".hangul").on('keyboardChange', function(e, keyboard, el){
-		hanGulIndex=$(this).index(this);
-		
-		makeHangul();
-		}).keyboard({
-			accepted: function(e, keyboard, el) {
-				 hideBlind();
-			},
-			canceled: function(e, keyboard, el){
-				 hideBlind();
-			},
-			visible: function(e, keyboard, el) {
-				$(".lay_pop_blind").stop().fadeIn("500");
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음'
-			},
-			customLayout: {
-				"normal" : [
-				"ㅂ ㅈ ㄷ ㄱ ㅅ ㅕ ㅕ ㅑ ㅐ ㅔ",
-				" ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ ",
-				"{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ {bksp}",
-				"{cancel} {accept}",
-			],
-			"shift" : [
-				"ㅃ ㅉ ㄸ ㄲ ㅆ ㅛ ㅕ ㅑ ㅒ ㅖ",
-				"ㅁ ㄴ ㅇ ㄹ ㅎ ㅗ ㅓ ㅏ ㅣ",
-				"{shift} ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ ㅡ {bksp}",
-				"{cancel} {accept}",
-			]
-		}
-	}).addTyping();
-
-	$(".number_key").on('keyboardChange', function(e, keyboard, el){
-		
-		}).keyboard({
-			accepted: function(e, keyboard, el) {
-				hideBlind();
-			},
-			canceled: function(e, keyboard, el){
-				hideBlind();
-			},
-			visible: function(e, keyboard, el) {
-				$(".ui-keyboard").addClass('numkey hide010');
-				$(".lay_pop_blind").stop().fadeIn("500");
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음'
-			},
-			customLayout: {
-				"normal" : [
-				"1 2 3",
-				"4 5 6",
-				"7 8 9",
-				"0 {bksp}",
-				"{cancel} {accept}"
-			]
-		},
-		maxLength : 4,
-	}).addTyping();
-
-	$(".number_key2").on('keyboardChange', function(e, keyboard, el){
-		
-		}).keyboard({
-			accepted: function(e, keyboard, el) {
-				hideBlind();
-			},
-			canceled: function(e, keyboard, el){
-				hideBlind();
-			},
-			visible: function(e, keyboard, el) {
-				$(".ui-keyboard").addClass('numkey hide010');
-				$(".lay_pop_blind").stop().fadeIn("500");
-			},
-			validate: function(keyboard, value, isClosing){
-				var thisIndex=$(".number_key2").index(keyboard.$el);
-
-				if (value.length==4) {// if the value is invalid, alert the user
-					$(".number_key2").eq(thisIndex).closest("li").removeClass("alert");
-					return true;
-				}else{
-					$(".number_key2").eq(thisIndex).closest("li").addClass("alert");
-					return true;
-				}
-				
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음'
-			},
-			customLayout: {
-				"normal" : [
-				"1 2 3",
-				"4 5 6",
-				"7 8 9",
-				"0 {bksp}",
-				"{cancel} {accept}"
-			]
-		},
-		maxLength : 4,
-	}).addTyping();
-
-	$(".phone_key").on('keyboardChange', function(e, keyboard, el){
-		}).keyboard({
-			accepted: function(e, keyboard, el) {
-				hideBlind();
-			},
-			canceled: function(e, keyboard, el){
-				hideBlind();
-			},
-			visible: function(e, keyboard, el) {
-				$(".ui-keyboard").addClass('numkey');
-				$(".lay_pop_blind").stop().fadeIn("500");
-			},
-			validate: function(keyboard, value, isClosing){
-				var test = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);// test value for an phone address
-				var thisIndex=$(".phone_key").index(keyboard.$el);
-
-				if (!test && isClosing) {// if the value is invalid, alert the user
-					$(".phone_key").eq(thisIndex).closest("li").addClass("alert");
-					return true;
-				}else{
-					$(".phone_key").eq(thisIndex).closest("li").removeClass("alert");
-					return true;
-				}
-				
-				return test;// return valid test (true or false)
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음'
-			},
-			customLayout: {
-				"normal" : [
-				"1 2 3",
-				"4 5 6",
-				"7 8 9",
-				"010 0 {bksp}",
-				"{cancel} {accept}"
-			]
-		},
-		maxLength : 11,
-	}).addTyping();
-
-	$(".mail_key").on('keyboardChange', function(e, keyboard, el){
-		}).keyboard({
-			accepted: function(e, keyboard, el) {
-				hideBlind();
-			},
-			canceled: function(e, keyboard, el){
-				hideBlind();
-			},
-			visible: function(e, keyboard, el) {
-				$(".lay_pop_blind").stop().fadeIn("500");
-			},
-			validate: function(keyboard, value, isClosing){
-				var test = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/.test(value);// test value for an email address
-				var thisIndex=$(".mail_key").index(keyboard.$el);
-
-				if (!test && isClosing) {// if the value is invalid, alert the user
-					$(".mail_key").eq(thisIndex).closest("li").addClass("alert");
-					return true;
-				}else{
-					$(".mail_key").eq(thisIndex).closest("li").removeClass("alert");
-					return true;
-				}
-				
-				return test;// return valid test (true or false)
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음'
-			},
-			customLayout: {
-				"normal" : [
-				"1 2 3 4 5 6 7 8 9 0",
-				"q w e r t y u i o p",
-				"a s d f g h j k l @",
-				"z x c v b n m .com {bksp}",
-				"{cancel} {accept}"
-			]
-		},
-		maxLength : 30,
-	}).addTyping();
-
-	$(".pass_key").on('keyboardChange', function(e, keyboard, el){
-		}).keyboard({
-		accepted: function(e, keyboard, el) {
-			hideBlind();
-		},
-		canceled: function(e, keyboard, el){
-           hideBlind();
-        },
-		visible: function(e, keyboard, el) {
-			$(".lay_pop_blind").stop().fadeIn("500");
-		},
-		validate: function(keyboard, value, isClosing){
-				var test = /^^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value);// test value for an pass
-				var thisIndex=$(".pass_key").index(keyboard.$el);
-
-				if (!test && isClosing) {// if the value is invalid, alert the user
-					$(".pass_key").eq(thisIndex).closest("li").addClass("alert");
-					return true;
-				}else{
-					$(".pass_key").eq(thisIndex).closest("li").removeClass("alert");
-					return true;
-				}
-				
-				return test;// return valid test (true or false)
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음',
-				'alt': '특수' 
-			},
-			customLayout: {
-				"normal" : [
-					"1 2 3 4 5 6 7 8 9 0",
-					"q w e r t y u i o p",
-					"a s d f g h j k l ",
-					"{alt} z x c v b n m {bksp}",
-					"{cancel} {accept}"
-				],
-				"alt" : [
-					"! @ # $ % ^ & * ( )",
-					" ; : , < . > / ? \  - ",
-					"{alt} _ = + [ ] { } {bksp}",
-					"{cancel} {accept}"
-				]
-		},
-		maxLength : 16,
-	}).addTyping();
-
-	$(".pass_key_a").on('keyboardChange', function(e, keyboard, el){
-		}).keyboard({
-		accepted: function(e, keyboard, el) {
-			hideBlind();
-		},
-		canceled: function(e, keyboard, el){
-            hideBlind();
-        },
-		visible: function(e, keyboard, el) {
-			$(".lay_pop_blind").stop().fadeIn("500");
-		},
-		validate: function(keyboard, value, isClosing){
-			var passVal=$(".pass_prev").val();		
-			var thisIndex=$(".pass_key_a").index(keyboard.$el);
-
-				if (isClosing) {// if the value is invalid, alert the user
-
-					if(value==passVal){
-						$(".pass_key_a").eq(thisIndex).closest("li").removeClass("alert");
-					}else{
-						$(".pass_key_a").eq(thisIndex).closest("li").addClass("alert");
-					}
-					return true;
-				}
-			},
-			layout: 'custom',
-			usePreview: true,
-			autoAccept: true,
-			display : {
-				'accept': '등록',
-				'cancel': '취소',
-				'bksp': '삭제',
-				'shift': '쌍자음',
-				'alt': '특수' 
-			},
-			customLayout: {
-				"normal" : [
-					"1 2 3 4 5 6 7 8 9 0",
-					"q w e r t y u i o p",
-					"a s d f g h j k l ",
-					"{alt} z x c v b n m {bksp}",
-					"{cancel} {accept}"
-				],
-				"alt" : [
-					"! @ # $ % ^ & * ( )",
-					" ; : , < . > / ? \  - ",
-					"{alt} _ = + [ ] { } {bksp}",
-					"{cancel} {accept}"
-				]
-		},
-		maxLength : 16,
-	}).addTyping();
-} */
-/* 키보드 end */
+/* 업슬라이드 start */
+// export function setSliderUp(){
+// 	var mySwiper = new Swiper(".up_slide .swiper-container", {
+// 		effect:"coverflow",
+// 		direction:"vertical",
+// 		slidesPerView:5,
+// 		speed:400,
+// 		loop:false,
+// 		centeredSlides:true,
+// 		  coverflowEffect: {
+// 			rotate: 0,
+//             stretch: -37,
+//             depth:300,
+//             modifier: 2,
+//             slideShadows : false
+// 		  },
+// 		updateOnWindowResize:true
+// 	});
+// }
+/* 업슬라이드 end */
 
 /* 셀렉트 선택시 특정영역 보이기 start */
 $(document).on(//접기 버튼 클릭시
@@ -532,130 +285,6 @@ $(document).on(
 	return false;
 })
 /* 프로필 앞으로 보내기 end */
-
-/* 프로필정보 폼체크 start */
-$(document).on(
-	"change", ".pro_b_form :text", function(){
-	
-	if($(this).val().length > 0){
-		$(this).addClass("pass");
-	}else{
-		$(this).removeClass("pass");
-	}
-
-	var thisInput=$(this).parents("form").find(":text").length;
-	var thisInputPass=$(this).parents("form").find(".pass").length;
-	
-	if(thisInput===thisInputPass){
-		$(".pro_b_form .last_btn button").removeClass("disabled");
-		$(".pro_b_form .last_btn button").attr("data-link-show","profile_save");
-	}else{
-		$(".pro_b_form .last_btn button").addClass("disabled");
-		$(".pro_b_form .last_btn button").attr("data-link-show","profile_more");
-	}
-	
-})
-
-export function gotoEmpty(){
-	var thisText=$(".pro_b_form :text").not(".pass").eq(0);
-	var thisImg=$(".add_big_btn a img").length;
-
-	if(thisImg === 0){
-		$("html,body").scrollTop($(".add_big_btn").offset().top-$("#header").innerHeight());
-		$(".add_big_btn a").click();
-	}else{
-		$("html,body").scrollTop(thisText.offset().top-$("#header").innerHeight());
-		thisText.focus();
-	}	
-}
-
-$(document).on(
-	"click", "#profile_more .btns a", function(){
-
-		setTimeout(gotoEmpty,300);
-		return false;
-})
-
-$(document).on(
-	"click", ".pro_b_form .last_btn button", function(){
-		var thisText=$(".pro_b_form :text").not(".pass").eq(0).closest("td").prev("th").find("p").text();
-		var thisImg=$(".add_big_btn a img").length;
-
-		if(thisImg === 0){
-			thisText="사진";
-			$("#profile_more .pop_cont p span").text("을 등록해 주세요.");
-		}else{
-			if(thisText === "이름"){
-				$("#profile_more .pop_cont p span").text("을 입력해 주세요.");
-			}else if(thisText === "생년월일"){
-				$("#profile_more .pop_cont p span").text("을 입력해 주세요.");
-			}else{
-				$("#profile_more .pop_cont p span").text("를 입력해 주세요.");
-			}
-		}
-		
-		$("#profile_more .pop_cont p span").prepend("<em>"+thisText+"</em>");
-})
-/* 프로필정보 폼체크 end */
-
-/* 일반 폼체크 start */
-/* $(document).on(
-	"change", ".normal_form input", function(){
-	var thisInput=$(".normal_form input");
-	
-	for(var i=0; i<thisInput.length; i++){
-		var thisVal=thisInput.eq(i).val();
-		
-		if(thisVal===""){
-			thisInput.eq(i).addClass("empty");
-		}else{
-			thisInput.eq(i).removeClass("empty");
-		}
-	}
-	var emptyInput=$(".normal_form .empty").length;
-	var alertInput=$(".normal_form .inputs > .alert").length;
-
-	if(emptyInput+alertInput===0){
-		$(".last_btn button").attr("disabled",false);
-	}else{
-		$(".last_btn button").attr("disabled",true);
-	}
-}) */
-
-$(document).on(
-	"change", ".agr_btn :checkbox", function(){
-		
-	if($(this).is(":checked")){
-		$(this).closest(".agr_btn").find("button").attr("disabled",false);
-	}else{
-		$(this).closest(".agr_btn").find("button").attr("disabled",true);
-	}	
-})
-
-$(document).on(
-	"change", ".agreed_all .must :checkbox", function(){
-	var thisCheck=$(".agreed_all .must :checkbox").not(".all").length;
-	var thisCheckNum=$(".agreed_all .must :checked").not(".all").length;
-	
-	if($(this).hasClass("all")){
-		if($(this).is(":checked")){
-			$(".agreed_all .must :checkbox").prop("checked",true);
-			$(".agr_btn").find("button").attr("disabled",false);
-		}else{
-			$(".agreed_all .must :checkbox").prop("checked",false);
-			$(".agr_btn").find("button").attr("disabled",true);
-		}
-	}else{
-		if(thisCheckNum===thisCheck){
-			$(".agreed_all .must .all").prop("checked",true);
-			$(".agr_btn").find("button").attr("disabled",false);
-		}else{
-			$(".agreed_all .must .all").prop("checked",false);
-			$(".agr_btn").find("button").attr("disabled",true);
-		}
-	}
-})
-/* 일반 폼체크 end */
 
 /* pin 키보드 start */
 export function makePinPad(){
@@ -742,15 +371,17 @@ export function onloadCall(){//화면 로드시 세팅 스크립트 실행
 	// setContents();
 	selectJs.makeSelect();
 	makeCal();
-	// setKey();
-
+	
+	// if($(".up_slide").length > 0){
+	// 	setSliderUp();
+	// }
 	if($(".pin_pass").length > 0){
 		makePinPad();
 	}	
 
-	if($(".index .mbanner").length > 0){
-		// setIndex();
-	}	
+	// if($(".index .mbanner").length > 0){
+	// 	setIndex();
+	// }	
 };
 window.onload = onloadCall; 
 

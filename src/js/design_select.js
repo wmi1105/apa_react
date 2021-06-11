@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import * as common from './common_pub.js';
-
 /* 디자인셀럭트 start */
 ////////////만약 select를 동적으로 변경,추가 하는 기능과 같이 사용하는경우 동적으로 변경,추가 하는 함수를 실행하고 나서 reMakeSelect(); 함수를 실행해야지만 동적으로 변경된 태그도 적용된다.
 	
@@ -70,12 +69,6 @@ $(document).on(
 $(document).on(
 	"click", ".select_deco dd", 
 	function(){
-		var thisNum=$(".select_deco dd").index(this);
-		var thisDt=$(".select_deco dd").eq(thisNum);
-		var myDropDown=thisDt.parent().prev("select");
-		var dropLength = myDropDown.children().length;
-		
-		$("select").attr("size",dropLength);
 		$(".select_deco dd").fadeOut(speed)
 		common.bodyYesScroll();
 		return false;
