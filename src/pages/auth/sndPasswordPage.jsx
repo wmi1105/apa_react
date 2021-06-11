@@ -11,7 +11,7 @@ const SndPasswordPage = (props) => (
         navOption={{
         headerId: "back",
         headerPath: "back",
-        title: "2차 비밀번호 설정",
+        title: "2중 비밀번호 설정",
         }}
     >
         <SndPasswordContainer />

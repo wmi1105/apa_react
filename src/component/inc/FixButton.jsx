@@ -1,5 +1,14 @@
 import React from 'react';
 
+/* 
+<FixButton
+    label=""
+    btnDisable={btnDisable}
+    onClick={props.onClick}
+/>
+
+*/
+
 const FixButton = (props) => {
 
     if(!props) return null;

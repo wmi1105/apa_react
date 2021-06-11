@@ -16,7 +16,8 @@ const Nav = (props) => {
             break;
 
         default:
-            history.push(headerPath);
+            // history.push(headerPath);
+            headerPath()
             break;
         }
     };

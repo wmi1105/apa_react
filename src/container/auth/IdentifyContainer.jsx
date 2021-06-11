@@ -17,7 +17,7 @@ const IdentifyContainer = () => {
         // history.push('/join/info')
 
         //가입 중복계정
-        // history.push('/join/overAccount')
+        // history.push('/auth/overAccount')
 
         //전화번호 변경
         //history.push(???)
@@ -25,7 +25,9 @@ const IdentifyContainer = () => {
     
 
     return(
+        <>
         <Identify setCheck={setCheck}/>
+        </>
     )
 }
 

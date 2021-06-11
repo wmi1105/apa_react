@@ -1,46 +1,59 @@
 import React, { useEffect, useState } from "react";
 import Section from "component/inc/Section";
 import FixButton from "component/inc/FixButton";
+import ConvertInput from "component/inc/ConvertInput";
+import { emailValueCheck, passwordValueCheck } from "js/common";
 
-const JoinInfo = ({ onSubmit }) => {
+const JoinInfo = ({ info, onSubmit }) => {
+  const [btnDisable, setBtnDisable] = useState(true);
+
   const [input, setInput] = useState({
-    name: "",
-    phone: "",
+    name: "윤개똥",
+    phone: "010-1111-1111",
     email: "",
     password: "",
     passwordCheck: "",
   });
 
-  const [typeCheck, setTypeCheck] = useState({
-    phone: true,
+  //비밀번호 input type password <-> text 전환
+  const [inputType, setInputType] = useState({
+    password: "password",
+    passwordCheck: "password",
+  });
+
+  //입력값 글자수, 조합 체크
+  const [valueCheck, setValueCheck] = useState({
     email: true,
     password: true,
     passwordCheck: true,
   });
 
   const onClickHandler = () => {
-    onSubmit();
+    //입력값 유효성 체크
+    const tmp = {
+      email : emailValueCheck(input.email),
+      password : passwordValueCheck(input.password),
+      passwordCheck : (input.password === input.passwordCheck)
+    }
+    
+    //유효하지 않은 입력값이 있으면 return
+    if(Object.keys(tmp).find((item) => !tmp[item])){
+      setValueCheck(tmp);
+      return false;
+    }
+
+    
+    onSubmit(input);
   };
 
   useEffect(() => {
-    const object = { ...input };
-    delete object.name;
-
-    Object.keys(object).map((key) => {
-      if (object[key] !== "") {
-      }
-      return null;
-    });
+    //input중 빈값이 있으면 버튼 비활성
+    if(Object.keys(input).find((item) => input[item] === '')){
+      setBtnDisable(true);
+    }else{
+      setBtnDisable(false);
+    }
   }, [input]);
-
-  useEffect(() => {
-    setTypeCheck({
-      phone: true,
-      email: true,
-      password: true,
-      passwordCheck: true,
-    })
-  }, [])
 
   return (
     <>
@@ -73,7 +86,7 @@ const JoinInfo = ({ onSubmit }) => {
                     <span>휴대폰번호</span>
                     <input
                       type="text"
-                      vlaue={input.phone}
+                      value={input.phone}
                       className="phone_key"
                       title="휴대폰번호 입력"
                       placeholder="휴대폰번호를 입력해 주세요."
@@ -81,9 +94,9 @@ const JoinInfo = ({ onSubmit }) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.phone && (
+                {/* {!valueCheck.phone && (
                   <p className="info">휴대폰번호 형식이 올바르지 않습니다.</p>
-                )}
+                )} */}
               </li>
               <li>
                 <p>
@@ -102,7 +115,7 @@ const JoinInfo = ({ onSubmit }) => {
                     />
                   </label>
                 </p>
-                {!typeCheck.email && (
+                {!valueCheck.email && (
                   <p className="info">이메일 형식이 올바르지 않습니다.</p>
                 )}
               </li>
@@ -111,7 +124,7 @@ const JoinInfo = ({ onSubmit }) => {
                   <label>
                     <span>비밀번호</span>
                     <input
-                      type="password"
+                      type={inputType.password}
                       value={input.password}
                       className="pass_key pass_prev"
                       title="비밀번호 입력"
@@ -121,9 +134,15 @@ const JoinInfo = ({ onSubmit }) => {
                       }
                       // readOnly
                     />
+                    <ConvertInput
+                      type={inputType.password}
+                      onClick={(type) =>
+                        setInputType({ ...inputType, password: type })
+                      }
+                    />
                   </label>
                 </p>
-                {!typeCheck.password && (
+                {!valueCheck.password && (
                   <p className="info">8~16자리 이상 입력해주세요. </p>
                 )}
               </li>
@@ -132,7 +151,7 @@ const JoinInfo = ({ onSubmit }) => {
                   <label>
                     <span>비밀번호</span>
                     <input
-                      type="password"
+                      type={inputType.passwordCheck}
                       value={input.passwordCheck}
                       className="pass_key_a"
                       title="비밀번호 입력"
@@ -142,9 +161,15 @@ const JoinInfo = ({ onSubmit }) => {
                       }
                       // readOnly
                     />
+                    <ConvertInput
+                      type={inputType.passwordCheck}
+                      onClick={(type) =>
+                        setInputType({ ...inputType, passwordCheck: type })
+                      }
+                    />
                   </label>
                 </p>
-                {!typeCheck.passwordCheck && (
+                {!valueCheck.passwordCheck && (
                   <p className="info">비밀번호가 일치하지 않습니다.</p>
                 )}
               </li>
@@ -155,7 +180,7 @@ const JoinInfo = ({ onSubmit }) => {
 
       <FixButton
         label="확인"
-        btnDisable = {true}
+        btnDisable={btnDisable}
         onClick={onClickHandler}
       />
     </>

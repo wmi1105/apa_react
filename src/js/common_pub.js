@@ -337,6 +337,7 @@ export function makePinPad(){
 	})
 		
 }
+
 /* pin 키보드 end */
 
 /* 제이쿼리ui 팝업창 시작 */
@@ -375,9 +376,9 @@ export function onloadCall(){//화면 로드시 세팅 스크립트 실행
 	// if($(".up_slide").length > 0){
 	// 	setSliderUp();
 	// }
-	if($(".pin_pass").length > 0){
-		makePinPad();
-	}	
+	// if($(".pin_pass").length > 0){
+	// 	makePinPad();
+	// }	
 
 	// if($(".index .mbanner").length > 0){
 	// 	setIndex();

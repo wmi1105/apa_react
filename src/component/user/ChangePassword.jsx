@@ -1,23 +1,8 @@
 import Section from "component/inc/Section";
 import React, { useEffect, useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { passwordValueCheck } from "js/common";
 import FixButton from "component/inc/FixButton";
-
-const TypeIcon = ({ type }) => (
-  <>
-    {type === "password" && <AiOutlineEye />}
-    {type === "text" && <AiOutlineEyeInvisible />}
-  </>
-);
-
-const typeStyle = {
-  position: "absolute",
-  right: "10px",
-  lineHeight: "38px",
-  height: "38px",
-  fontSize: "15px",
-};
+import ConvertInput from "component/inc/ConvertInput";
 
 const ChangePassword = ({ setVisible, onSavePassword }) => {
   const [btnDisabled, setBtnDisable] = useState(true);
@@ -125,12 +110,10 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
                       }
                       // readOnly
                     />
-                    <span
-                      style={typeStyle}
-                      onClick={() => typeSwitch("oldKey")}
-                    >
-                      <TypeIcon type={inputType.oldKey} />
-                    </span>
+                    <ConvertInput
+                      type={inputType.oldKey}
+                      onClick={(type) => setInputType({...inputType, oldKey:type})}
+                    />
                   </label>
                 </p>
                 {!alertVisible.oldKey && (
@@ -151,12 +134,10 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
                       }
                       // readOnly
                     />
-                    <span
-                      style={typeStyle}
-                      onClick={() => typeSwitch("newKey")}
-                    >
-                      <TypeIcon type={inputType.newKey} />
-                    </span>
+                    <ConvertInput
+                      type={inputType.newKey}
+                      onClick={(type) => setInputType({...inputType, newKey:type})}
+                    />
                   </label>
                 </p>
                 {!alertVisible.newKey && (
@@ -182,12 +163,10 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
                       }
                       // readOnly
                     />
-                    <span
-                      style={typeStyle}
-                      onClick={() => typeSwitch("reNewKey")}
-                    >
-                      <TypeIcon type={inputType.reNewKey} />
-                    </span>
+                    <ConvertInput
+                      type={inputType.reNewKey}
+                      onClick={(type) => setInputType({...inputType, reNewKey:type})}
+                    />
                   </label>
                 </p>
                 {!alertVisible.reNewKey && (

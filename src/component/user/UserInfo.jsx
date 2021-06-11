@@ -1,8 +1,16 @@
 import React from "react";
 import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
 
-const UserInfo = ({ userInfo, modInfo }) => {
+const account = {
+  email : '이메일',
+  kakao : '카카오',
+  naver : '네이버',
+  apple : '애플아이디',
+  google : '구글'
+}
+
+const UserInfo = ({ userInfo, onClick }) => {
+  // const loginType = userInfo.loginType;
 
   return (
     <>
@@ -26,53 +34,51 @@ const UserInfo = ({ userInfo, modInfo }) => {
                 type="button"
                 className="click_show_evt"
                 data-link-show="phone_mod"
-                onClick={() => modInfo("phone")}
+                onClick={() => onClick("phone")}
               >
                 수정하기
               </button>
-            </li>
-            <li>
-              <strong>이메일</strong>
-              <p>wetewt@naver.com</p>
-              <button
-                type="button"
-                className="click_show_evt"
-                data-link-show="email_mod"
-                onClick={() => modInfo("email")}
-              >
-                수정하기
-              </button>
-            </li>
-            <li>
-              <strong>비밀번호</strong>
-              <p>********</p>
-              <button type="button" onClick={() => modInfo("password")}>수정하기</button>
-            </li>
-            <li>
-              <strong>연동계정</strong>
-              <p className="icn email">이메일로 로그인</p>
-              {/* <p className="icn kakao">카카오로 로그인</p> <p className="icn naver">네이버로 로그인</p> <p className="icn apple">애플아이디로 로그인</p> <p className="icn google">구글로 로그인</p>*/}
-              <button type="button">수정하기</button>
-            </li>
-            <li>
-              <strong>본인인증</strong>
-              <p className="cer">
-                <span>인증완료</span>
-              </p>
-              {/* <p className="cer red"><span>인증필요</span></p> */}
-              <button type="button">수정하기</button>
             </li>
             <li>
               <strong>생년월일</strong>
               <p>2020.08.07</p>
               {/* <p className="empty">생년월일을 입력해 주세요.</p> */}
-              <button type="button" onClick={() => modInfo("birth")}>수정하기</button>
+              <button type="button" onClick={() => onClick("birth")}>수정하기</button>
             </li>
+            <li>
+              <strong>이메일</strong>
+              {/* <p>{userInfo.email ? userInfo.email:'이메일을 입력해 주세요'}</p> */}
+              <p>aaa@naver.com</p>
+              <button
+                type="button"
+                className="click_show_evt"
+                data-link-show="email_mod"
+                onClick={() => onClick("email")}
+              >
+                수정하기
+              </button>
+            </li>
+
+            {/* {loginType === 'email' &&  */}
+              <li>
+                <strong>비밀번호</strong>
+                <p>********</p>
+                <button type="button" onClick={() => onClick("password")}>수정하기</button>
+              </li>
+             {/* } */}
+
+            <li>
+              <strong>연동계정</strong>
+              {/* <p className={`icn ${loginType}`}>{account[loginType]}로 로그인</p> */}
+              <p className="icn email">이메일로 로그인</p>
+              <button type="button">수정하기</button>
+            </li>
+            
             <li>
               <strong>주소</strong>
               <p>경기 성남시 분당구 황새울로300번길 99(로얄팰리스)604호</p>
               {/* <p className="empty">주소를 입력해 주세요.</p> */}
-              <button type="button" onClick={() => modInfo("address")}>수정하기</button>
+              <button type="button" onClick={() => onClick("address")}>수정하기</button>
             </li>
             <li>
               <strong>문진프로필</strong>
@@ -85,21 +91,6 @@ const UserInfo = ({ userInfo, modInfo }) => {
           </ul>
         </div>
       </Section>
-
-      <FixButton
-        label="저장하기"
-        btnDisable = {true}
-        onClick={null}
-      />
-
-      {/* <Modal targetId={modalData.target_id} visible={modalVisible}>
-        <UserInfoModal
-          targetId={modalData.target_id}
-          defaultValue={modalData.defaultValue}
-          onClickOk={modalOk}
-          onClickCancel={() => setModalVisible(false)}
-        />
-      </Modal> */}
     </>
   );
 };
