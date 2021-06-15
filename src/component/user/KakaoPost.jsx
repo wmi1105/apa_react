@@ -1,8 +1,9 @@
+
 import React from "react";
 import DaumPostcode from "react-daum-postcode";
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 
-const KakaoPost = ({ isOpenPost, onAddress }) => {
+const KakaoPost = ({ onAddress }) => {
 
   const onCompletePost = (data) => {
     // let loadAddress = data.address;

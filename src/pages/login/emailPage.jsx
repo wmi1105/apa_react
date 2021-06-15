@@ -3,7 +3,7 @@ import React from "react";
 import LoginMailContainer from "container/login/LoginMailContainer";
 import Container from "pages/inc/Container";
 
-const EmailPage = (props) => (
+const LoginEmailPage = (props) => (
   <Container
     wrap="member"
     header={false}
@@ -19,4 +19,4 @@ const EmailPage = (props) => (
       </Container>
 );
 
-export default EmailPage;
+export default LoginEmailPage;

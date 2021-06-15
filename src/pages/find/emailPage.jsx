@@ -15,7 +15,7 @@ const EmailPage = (props) => (
         }}
       >
         <FindEmailContainer />
-        </Container>
-    );
+      </Container>
+    ); 
 
 export default EmailPage;

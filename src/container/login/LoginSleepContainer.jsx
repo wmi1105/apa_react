@@ -1,13 +1,20 @@
 import Sleep from 'component/login/Sleep';
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const LoginSleepContainer = (props) => {
+const LoginSleepContainer = ({history}) => {
+
+    const [info, setInfo] = useState(null);
+
+    const onClick = () => {
+        history.push('/auth/identify/.user.info')
+    }
 
     return(
         <>
-        <Sleep />
+        <Sleep info={info} onClick={onClick}/>
         </>
     )
 }
 
-export default LoginSleepContainer;
+export default withRouter(LoginSleepContainer);

@@ -1,8 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
 const EmailCheck = ({ history }) => {
   return (
@@ -26,7 +26,7 @@ const EmailCheck = ({ history }) => {
       <FixButton
         label="로그인 하기"
         btnDisable={false}
-        onClick={ history.push("/login/email")}
+        onClick={() =>  history.push("/login/email")}
         btnProps={{}}
       />
     </>

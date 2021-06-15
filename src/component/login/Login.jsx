@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 import AppleLoginBtn from "./socialLogin/AppleLoginBtn";
 import GoogleLoginBtn from "./socialLogin/GoogleLoginBtn";
 import KakaoLoginBtn from "./socialLogin/KakaoLoginBtn";
@@ -50,13 +50,13 @@ const Login = ({ history }) => {
             </ul>
             <ul className="links">
               <li>
-                <button type="button" onClick={() => history.push('/find/email')}>이메일 찾기</button>
+                <button type="button" onClick={() => history.push('/auth/identification/phone/.find.email')}>이메일 찾기</button>
               </li>
               <li>
                 <button type="button" onClick={() => history.push('/find/password')}>비밀번호 찾기</button>
               </li>
               <li>
-                <button type="button" onClick={() => history.push('/join/selectType')}>회원가입</button>
+                <button type="button" onClick={() => history.push('/join')}>회원가입</button>
               </li>
             </ul>
             <dl className="sns">
@@ -67,6 +67,7 @@ const Login = ({ history }) => {
                     <KakaoLoginBtn onResponse={locialLoginResponse}>
                       카카오톡으로 로그인<span>마지막 로그인 계정</span>
                     </KakaoLoginBtn>
+
                   </li>
                   <li className="naver">
                     <NaverLoginBtn onResponse={locialLoginResponse}>

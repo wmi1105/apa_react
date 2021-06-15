@@ -1,4 +1,4 @@
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "./inc/Container";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import FixButton from "component/inc/FixButton";
-import Section from "component/inc/Section";
+import FixButton from "component/common/FixButton";
+import Section from "component/common/Section";
 
 const PostDetail = ({ address, onClick }) => {
   const [input, setInput] = useState("");

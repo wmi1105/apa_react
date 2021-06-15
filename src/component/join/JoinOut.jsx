@@ -1,6 +1,6 @@
 import React from "react";
-import Section from "component/inc/Section";
-import FixChkButton from "component/inc/FixChkButton";
+import Section from "component/common/Section";
+import FixChkButton from "component/common/FixChkButton";
 
 const JoinOut = ({onClick}) => {
   return (

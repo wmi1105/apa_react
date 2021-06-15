@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from "react";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
 const Terms = ({ onItemVisible, onSumbit }) => {
   const [btnDisable, setBtnDisable] = useState(true);

@@ -11,21 +11,25 @@ const UserInfoContainer = ({ history }) => {
   const modClickHandler = (type) => {
     switch (type) {
       case "phone":
+        //pass인증
         setModalTargetId("phone_mod");
         setModalVisible(true);
         break;
 
       case "email":
+        //text수정
         setModalTargetId("email_mod");
         setModalVisible(true);
         break;
 
       case "password":
-        history.push("/user/changePassword");
+        //비밀번호 변경 페이지
+        history.push("/user/changePassword/.user.info");
         break;
 
       case "address":
-        history.push("/user/kakaoPost");
+        //kakaoPost
+        history.push("/user/kakaoPost/.user.info");
         break;
 
       default:
@@ -36,11 +40,11 @@ const UserInfoContainer = ({ history }) => {
   const modalClickOk = () => {
     switch (modalTargetId) {
       case "phone_mod":
-        history.push("/auth/identify");
+        history.push("/auth/identify/.user.info");
         break;
 
       case "email_mod":
-        //dispatch
+        //dispatch 이메일 수정
         setModalTargetId("");
         break;
 
@@ -59,8 +63,6 @@ const UserInfoContainer = ({ history }) => {
         onClickCancel={() => setModalVisible(false)}
         onClickOk={modalClickOk}
       />
-
-      {/* {modPassVisible && <ModPassword setVisible={val => setModPassVisible(val)} onSavePassword = {onSavePassword}/>} */}
     </>
   );
 };

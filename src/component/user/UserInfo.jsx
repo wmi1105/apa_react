@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 
 const account = {
   email : '이메일',
@@ -25,7 +25,11 @@ const UserInfo = ({ userInfo, onClick }) => {
             <li>
               <strong>이름</strong>
               <p>홍길동</p>
-              <button type="button">수정하기</button>
+            </li>
+            <li>
+              <strong>생년월일</strong>
+              <p>2020.08.07</p>
+              {/* <p className="empty">생년월일을 입력해 주세요.</p> */}
             </li>
             <li>
               <strong>휴대폰번호</strong>
@@ -38,12 +42,6 @@ const UserInfo = ({ userInfo, onClick }) => {
               >
                 수정하기
               </button>
-            </li>
-            <li>
-              <strong>생년월일</strong>
-              <p>2020.08.07</p>
-              {/* <p className="empty">생년월일을 입력해 주세요.</p> */}
-              <button type="button" onClick={() => onClick("birth")}>수정하기</button>
             </li>
             <li>
               <strong>이메일</strong>
@@ -71,7 +69,7 @@ const UserInfo = ({ userInfo, onClick }) => {
               <strong>연동계정</strong>
               {/* <p className={`icn ${loginType}`}>{account[loginType]}로 로그인</p> */}
               <p className="icn email">이메일로 로그인</p>
-              <button type="button">수정하기</button>
+              {/* <button type="button">수정하기</button> */}
             </li>
             
             <li>
@@ -79,14 +77,6 @@ const UserInfo = ({ userInfo, onClick }) => {
               <p>경기 성남시 분당구 황새울로300번길 99(로얄팰리스)604호</p>
               {/* <p className="empty">주소를 입력해 주세요.</p> */}
               <button type="button" onClick={() => onClick("address")}>수정하기</button>
-            </li>
-            <li>
-              <strong>문진프로필</strong>
-              <p>
-                등록된 프로필<span>3</span>개
-              </p>
-              {/* <p className="empty">문진프로필을 등록해 주세요.</p> */}
-              <button type="button">수정하기</button>
             </li>
           </ul>
         </div>

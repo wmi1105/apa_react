@@ -10,6 +10,10 @@ import "css/index.css";
 import "js/common_pub.js";
 import "js/design_select.js";
 import Home from "pages/homePage";
+import Spinner from "component/package/Spinner";
+import SndPasswordPage from "pages/user/sndPasswordPage";
+import IdentificationPage from "pages/auth/identificationPage";
+import LoginEmailPage from "pages/login/emailPage";
 
 
 function App() {
@@ -17,6 +21,15 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Route path="/" component={Home} exact/>
+
+      {/* redirect
+        * /대신 .로 입력 (/user/info -> .user.info) 
+        * 다음 경로까지 지정할 때 nextPage를 ''안에 넣음(/login 다음 /home일 때 .login'.home')
+      */}
+      <Route path="/login/email/:redirect" component={LoginEmailPage} />
+      <Route path="/auth/sndPassword/:use/:redirect" component={SndPasswordPage} exact />
+      <Route path="/auth/identification/:use/:redirect" component={IdentificationPage} />
+
         <DynamicRoute
           page={(path) =>
             import(`./pages${path}Page`)
@@ -28,7 +41,7 @@ function App() {
                 throw e;
               })
           }
-          // loading={null}
+          loading={<Spinner />}
           // props={{
           //   someProp1,
           //   someProp2,  // `someProp1` and `someProp2` are transfered to `module.dedault` above finally
@@ -47,27 +60,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-
-/index            홈
-/login            로그인 메인
-/login/email      이메일 로그인
-/terms            약관동의
-/identify         본인인증
-/join             가입방법 선택
-/join/selectType  가입방법 선택
-/join/info        회원가입 회원정보 입력
-/join/complete    회원가입 완료
-/join/overAccount 본인인증 후 중복회원 있음
-/join/joinOut     탈퇴
-
-/find/password    비밀번호 찾기
-/find/email       이메일 찾기
-
-/user/info    //사용자 정보 조회, 수정
-/user/account //비밀번호 변경
-
-
-
-*/

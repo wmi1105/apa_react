@@ -8,7 +8,7 @@ const KakaoPostPage = ({ history }) => {
 
   const onClick = () => {
     if(page === 'post'){
-      history.back()
+      history.goBack()
     }else{
       window.location.reload();
     }

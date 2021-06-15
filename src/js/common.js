@@ -1,5 +1,31 @@
 import $ from "jquery";
+import qs from 'qs';
 import { setNormalPop, bodyNoScroll, bodyYesScroll } from "./common_pub";
+
+export function redirectUrl(path){
+
+  if(path === undefined || path === ''){
+    return false;
+  }
+
+  let redirect = path;
+  let nextUrl = '';
+  if(path.indexOf("'") > 0){
+    redirect = path.substring(0, path.indexOf("'"));
+    nextUrl = path.substring(path.indexOf("'")+1,path.lastIndexOf("'"));
+  }
+
+  redirect =  redirect.replaceAll('.', '/');
+  if(nextUrl !== '') redirect += '/'+nextUrl;
+
+  return redirect;
+ }
+
+ export function querStringParsing(query){
+  return qs.parse(query, {
+    ignoreQueryPrefix : true
+  })
+ }
 
 //이메일 입력값 체크
 export function emailValueCheck(value) {
@@ -45,6 +71,7 @@ export function modalHide(id) {
   return false;
 }
 
+//2중 비밀번호 핀패드 만들기(/auth/sncPassword)
 export function makePinPad() {
   /* 랜덤값 만들기 start */
   var numbers = [];
@@ -64,7 +91,7 @@ export function makePinPad() {
   return numbers;
 }
 
-export function clickPinPad() {
+/* export function clickPinPad() {
   var pinInput = $(".pin_pass :password");
   if ($(this).parent().hasClass("del")) {
     //지우기
@@ -85,4 +112,4 @@ export function clickPinPad() {
   for (var i = 0; i <= pinInput.val().length - 1; i++) {
     $(".pin_pass .fake_key li").eq(i).addClass("on");
   }
-}
+} */

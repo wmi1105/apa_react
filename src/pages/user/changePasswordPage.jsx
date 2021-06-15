@@ -12,7 +12,7 @@ const changePasswordPage = (props) => (
     navOption={{
       headerId: "back",
       headerPath: "back",
-      title: "나의 정보",
+      title: "비밀번호변경",
     }}
   >
     <ChangePasswordContainer />

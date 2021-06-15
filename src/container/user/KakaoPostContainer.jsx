@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import Postcode from 'component/user/KakaoPost';
 import PostDetail from 'component/user/PostDetail';
 import { withRouter } from 'react-router';
+import { redirectUrl } from 'js/common';
 
-const KakaoPostContainer = ({history, onPage}) => {
+const KakaoPostContainer = ({onPage, history, match}) => {
+    const redirect = redirectUrl(match.params.redirect);
+
     const [isOpenPost, setIsOpenPost] = useState(true);
     const [address, setAddress] = useState({
         old: "",
@@ -20,7 +23,7 @@ const KakaoPostContainer = ({history, onPage}) => {
   const onSubmit = (val) => {
     //주소저장
     console.log(val)
-    history.push('/user/info');
+    history.push(redirect);
   }
 
   useEffect(() => {

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { withRouter } from "react-router";
 import { emailValueCheck, passwordValueCheck } from "js/common";
-
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
 const LoginMail = ({history, onLogin}) => {
   const passwordRef = useRef();
@@ -60,7 +59,6 @@ const LoginMail = ({history, onLogin}) => {
 
           <div className="login_box">
             {/* login_box start */}
-            <form action="" method="post" className="normal_form">
               <h2>로그인</h2>
               <ul className="inputs">
                 <li>
@@ -111,7 +109,6 @@ const LoginMail = ({history, onLogin}) => {
               >
                 <button type="button">비밀번호가 기억나지 않으세요?</button>
               </p>
-            </form>
           </div>
           {/* login_box end */}
         </div>

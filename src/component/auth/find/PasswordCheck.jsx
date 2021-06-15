@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
 const PasswordCheck =({history}) => {
   return (

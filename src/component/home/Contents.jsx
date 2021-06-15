@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SwipSlider from "../common/SwipSlider";
+import SwipSlider from "../package/SwipSlider";
 
 import banner1 from "image/thum/img_mbanner_01.png";
 import banner2 from "image/thum/img_mbanner_02.png";

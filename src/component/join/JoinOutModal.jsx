@@ -1,4 +1,4 @@
-import Modal from 'component/inc/Modal';
+import Modal from 'component/common/Modal';
 import React from 'react';
 
 const JoinOutModal = (props) => {

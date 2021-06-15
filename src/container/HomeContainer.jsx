@@ -7,7 +7,7 @@ import MarketingBanner from 'component/home/MarketingBanner';
 import MyMenu from 'component/home/MyMenu';
 import PublicBanner from 'component/home/PublicBanner';
 import Weather from 'component/home/Weather';
-import Section from 'component/inc/Section';
+import Section from 'component/common/Section';
 
 import AiButton from './user/AiButton';
 

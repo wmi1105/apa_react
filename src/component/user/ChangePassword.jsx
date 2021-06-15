@@ -1,36 +1,29 @@
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 import React, { useEffect, useState } from "react";
 import { passwordValueCheck } from "js/common";
-import FixButton from "component/inc/FixButton";
-import ConvertInput from "component/inc/ConvertInput";
+import FixButton from "component/common/FixButton";
+import ConvertInput from "component/common/ConvertInput";
 
-const ChangePassword = ({ setVisible, onSavePassword }) => {
+const ChangePassword = ({ onSubmit }) => {
   const [btnDisabled, setBtnDisable] = useState(true);
   const [inputType, setInputType] = useState({
     //type password/text toggle
-    oldKey: "password",
+    // oldKey: "password",
     newKey: "password",
     reNewKey: "password",
   });
   const [input, setInput] = useState({
-    oldKey: "",
+    // oldKey: "",
     newKey: "",
     reNewKey: "",
   });
   const [alertVisible, setAlertVisible] = useState({
     //value 경고메세지 표시
-    oldKey: true,
+    // oldKey: true,
     newKey: true,
     newKeyValue: true,
     reNewKey: true,
   });
-
-  //type password/text toggle
-  const typeSwitch = (id) => {
-    const tmp = { ...inputType };
-    tmp[id] = tmp[id] === "password" ? "text" : "password";
-    setInputType(tmp);
-  };
 
   //input onChange
   const onChangeHandler = (id, value) => {
@@ -41,36 +34,34 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
 
   const onClickHandler = () => {
     const visibleTmp = { ...alertVisible };
-    if (input.oldKey.length < 8 || input.oldKey.length > 16) {
-      visibleTmp["oldKey"] = false;
-    }
+    // if (input.oldKey.length < 8 || input.oldKey.length > 16) {
+    //   visibleTmp["oldKey"] = false;
+    // }
+    //비밀번호 글자수 체크
     if (input.newKey.length < 8 || input.newKey.length > 16) {
       visibleTmp["newKey"] = false;
     } else {
+      //비밀번호 조합 체크
       visibleTmp["newKeyValue"] = passwordValueCheck(input.newKey);
     }
 
+    //새비밀번호 = 비밀번호확인 체크
     if (input.newKey !== input.reNewKey) {
       visibleTmp["reNewKey"] = false;
     }
 
     setAlertVisible(visibleTmp);
-    if (Object.keys(visibleTmp).find((item) => !visibleTmp[item]) !== "") {
+    if (Object.keys(visibleTmp).find((item) => !visibleTmp[item])) {
       return false;
     }
 
-    onSavePassword(input);
-  };
-
-  //form 새로고침 방지
-  const onSubmit = (e) => {
-    e.preventDefault();
+    onSubmit(input);
   };
 
   //input이 공백이 아닐 때 버튼 활정
   useEffect(() => {
     if (
-      input.oldKey.length > 0 &&
+      // input.oldKey.length > 0 &&
       input.newKey.length > 0 &&
       input.reNewKey.length > 0
     )
@@ -85,18 +76,12 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
 
         <div id="contents">
           {/* contents start */}
-          <form
-            action=""
-            method="post"
-            className="normal_form"
-            onSubmit={onSubmit}
-          >
             <p className="normal_desc">
               현재 비밀번호를 입력 후<br />
               새로운 비밀번호를 등록하여 주세요.
             </p>
             <ul className="inputs write">
-              <li>
+              {/* <li>
                 <p className="no_title">
                   <label>
                     <input
@@ -119,7 +104,7 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
                 {!alertVisible.oldKey && (
                   <p className="info">8~16자리 이상 입력해주세요.</p>
                 )}
-              </li>
+              </li> */}
               <li>
                 <p className="no_title">
                   <label>
@@ -172,11 +157,8 @@ const ChangePassword = ({ setVisible, onSavePassword }) => {
                 {!alertVisible.reNewKey && (
                   <p className="info">비밀번호가 일치하지 않습니다.</p>
                 )}
-
-                {/* <AiOutlineEye /> */}
               </li>
             </ul>
-          </form>
         </div>
       </Section>
       

@@ -1,8 +1,9 @@
 import React from "react";
 import Container from "pages/inc/Container";
-import FindPasswordContainer from "container/find/FindPasswordContainer";
+import IdentificationContainer from "container/auth/IdentificationContainer";
 
-const PasswordPage = (props) => (
+
+const IdentificationPage = (props) => (
   <Container
     wrap="member"
     header={false}
@@ -11,11 +12,11 @@ const PasswordPage = (props) => (
     navOption={{
       headerId: "back",
       headerPath: "back",
-      title: "비밀번호 찾기",
+      title: "본인인증하기",
     }}
   >
-    <FindPasswordContainer />
+    <IdentificationContainer />
   </Container>
 );
 
-export default  PasswordPage;
+export default IdentificationPage;

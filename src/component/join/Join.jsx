@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { withRouter } from "react-router";
-import Section from "component/inc/Section";
+import Section from "component/common/Section";
 
 const Join = ({ history }) => {
   return (

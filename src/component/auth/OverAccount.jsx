@@ -1,8 +1,8 @@
 import React from "react";
 
 import icnNaver from "image/common/icn_naver.svg";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 // import icnEmail from 'image/common/icn_email.svg';
 // import icnKakao from 'image/common/icn_kakao.svg';
 // import icnApple from 'image/common/icn_apple.svg';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
-import ConvertInput from "component/inc/ConvertInput";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
+import ConvertInput from "component/common/ConvertInput";
 import { emailValueCheck, passwordValueCheck } from "js/common";
 
 const JoinInfo = ({ info, onSubmit }) => {

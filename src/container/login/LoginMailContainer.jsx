@@ -1,15 +1,24 @@
-import LoginMail from 'component/login/LoginMail';
-import React from 'react';
+import LoginMail from "component/login/LoginMail";
+import { redirectUrl } from "js/common";
+import React, { useCallback } from "react";
+import { withRouter } from "react-router-dom";
 
-const LoginMailContainer = (props) => {
+const LoginMailContainer = ({ history, match }) => {
 
-    const onLogin = (value) => {
-        // onLoginSubmit(value);
-      };
+  const onLogin = (value) => {
+    
+    linkPush();
+  };
 
-    return(
-        <LoginMail onLogin={onLogin}/>
-    )
-}
+  const linkPush = useCallback(() => {
+    let redirect = "/home";
+    if (match.params.redirect) {
+      redirect = redirectUrl(match.params.redirect);
+    }
+    history.push(redirect);
+  }, [])
 
-export default LoginMailContainer;
+  return <LoginMail onLogin={onLogin} />;
+};
+
+export default withRouter(LoginMailContainer);

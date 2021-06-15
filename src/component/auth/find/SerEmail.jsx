@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { emailValueCheck } from "js/common";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
-const SerEmail = ({ onSubmit }) => {
+const SerEmail = ({ onClick }) => {
   const [input, setInput] = useState("");
   const [inputCheck, setInputCheck] = useState(true);
   const [btnDisable, setBtnDisable] = useState(true);
@@ -13,49 +13,32 @@ const SerEmail = ({ onSubmit }) => {
     setInput(value);
     
     if(!inputCheck) setInputCheck(true);
-
-    const check = emailValueCheck(input);
-    setBtnDisable(!check);
-
-
-    // if (value.length < 12) {
-    //   setNumber(value);
-    // }
-    // if(value.length > 8){
-    //   setBtnDisable(false);
-    // }else{
-    //   setBtnDisable(true);
-    // }
-    // if(!inputCheck) setInputCheck(true);
   };
 
   const onClickHandler = useCallback(() => {
-    // const check = emailValueCheck(input);
-    // if(!check){
-    //   setInputCheck(false);
-    //   return false;
-    // }
+    const check = emailValueCheck(input);
+    if(!check){
+      setInputCheck(false);
+      return false;
+    }
 
-    onSubmit(input);
-  }, [input, onSubmit]);
+    onClick(input);
+  }, [input, onClick]);
 
-  const formSubmit = useCallback((e) => {
-      onClickHandler();
-      e.preventDefault();
-    }, [onClickHandler]
-  );
+  useEffect(() => {
+    if(input !== ''){
+      const check = emailValueCheck(input);
+      setBtnDisable(!check);
+    }else{
+      setBtnDisable(true);
+    }
+  }, [input])
 
   return (
     <>
       <Section>
         <div id="contents">
           {/* contents start */}
-          <form
-            action=""
-            method="post"
-            className="normal_form"
-            onSubmit={formSubmit}
-          >
             <p className="normal_desc">
               회원가입 시 등록된 이메일 주소를 입력해 주세요.
               <br />
@@ -67,7 +50,7 @@ const SerEmail = ({ onSubmit }) => {
                   <label>
                     <span>이메일</span>
                     <input
-                      type="email"
+                      type="text"
                       value = {input}
                       onChange = {valueCheck}
                       className="mail_key"
@@ -82,7 +65,6 @@ const SerEmail = ({ onSubmit }) => {
                 )}
               </li>
             </ul>
-          </form>
         </div>
       </Section>
 
@@ -92,7 +74,7 @@ const SerEmail = ({ onSubmit }) => {
         onClick={onClickHandler}
         btnProps={{
           'className':"click_show_evt",
-          'data-link-show;':"cer_mail"
+          'data-link-show':"cer_mail"
         }}
       />
     </>

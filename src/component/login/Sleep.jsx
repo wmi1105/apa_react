@@ -1,8 +1,8 @@
 import React from "react";
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 
-const Sleep = ({info}) => {
+const Sleep = ({info, onClick}) => {
   return (
     <>
       <Section>
@@ -45,9 +45,8 @@ const Sleep = ({info}) => {
 
       <FixButton
         label = "휴대폰 본인인증"
-        comp = {null}
         btnDisabled = {false}
-        onClick={null}
+        onClick={onClick}
       />
     </>
   );

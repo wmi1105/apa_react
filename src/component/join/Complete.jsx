@@ -1,7 +1,7 @@
 import React from "react";
 import imgComp from 'image/sub/img_comp.png'
-import Section from "component/inc/Section";
-import FixButton from "component/inc/FixButton";
+import Section from "component/common/Section";
+import FixButton from "component/common/FixButton";
 import { withRouter } from "react-router";
 
 const Complete = ({history}) => {
@@ -32,7 +32,7 @@ const Complete = ({history}) => {
     <FixButton
         label="가입정보 확인하기"
         btnDisable = {false}
-        onClick={() => history.push('/auth/sndPassword')}
+        onClick={() => history.push('/auth/sndPassword/setting/.user.info')}
       />
     </>
   );

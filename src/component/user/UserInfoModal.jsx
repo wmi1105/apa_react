@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { emailValueCheck } from "js/common";
-import Modal from "component/inc/Modal";
+import Modal from "component/common/Modal";
 
 const UserInfoModal = ({ targetId, visible, onClickCancel, onClickOk }) => {
   const [input, setInput] = useState("");
