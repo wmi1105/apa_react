@@ -1,94 +1,84 @@
-import React from "react";
-
-import thum_test1 from "image/thum/thum_test1.png" 
-import thum_test2 from  "image/thum/thum_test2.png";
+import React, { useMemo } from "react";
+import SwipSlider from "component/package/SwipSlider";
+import thum_test1 from "image/thum/thum_test1.png";
+import thum_test2 from "image/thum/thum_test2.png";
 import thum_test3 from "image/thum/thum_test3.png";
 
+const contents = [
+  {
+    img: thum_test1,
+    category: "건강상식",
+    title: "집콕생활, 비타민 D 결핍에 대처하는방법",
+    date: "2021.01.11",
+  },
+  {
+    img: thum_test2,
+    category: "의약상식",
+    itle: "집콕생활, 비타민 D 결핍에 대처하는방법",
+    date: "2021.01.11",
+  },
+  {
+    img: thum_test3,
+    category: "보건의료제도",
+    title: "집콕생활, 비타민 D 결핍에 대처하는방법",
+    date: "2021.01.11",
+  },
+];
+
 const HealthNTalk = (props) => {
+  const items = useMemo(() => {
+    return contents.map((item) => (
+      <>
+        <p className="img">
+          <button type="button">
+            <img src={item.img} alt="" />
+          </button>
+        </p>
+
+        <div className="inner">
+          {/* inner start */}
+          <p className="type type1">{item.category}</p>
+          <strong>
+            <button type="button">{item.title}</button>
+          </strong>
+          <p className="date">{item.date}</p>
+          <p className="like click_add_on">
+            <button type="button">좋아요</button>
+          </p>
+        </div>
+      </>
+    ));
+  }, []);
+
+  const setSwipPage = (page) => {
+    console.log(page);
+  };
+
   return (
     <>
       <article className="health">
         {/* health start */}
         <h2>건강N톡</h2>
 
-        <section className="swiper-container">
-          {/* swiper-container start */}
-          <ul className="swiper-wrapper">
-            <li className="swiper-slide">
-              <p className="img">
-                <button type="button">
-                  <img src={thum_test1} alt="" />
-                </button>
-              </p>
+        <SwipSlider
+          items={items}
+          swipPage={(page) => setSwipPage(page)}
+          options={{
+            loop: false,
+            slidesPerView: 1.2,
+            centeredSlides: false,
+            spaceBetween: 10,
+            updateOnWindowResize: true,
+            navigation: true,
+            pagination: {
+              clickable: true,
+            },
+          }}
+        />
 
-              <div className="inner">
-                {/* inner start */}
-                <p className="type type1">건강상식</p>
-                <strong>
-                  <button type="button">
-                    집콕생활, 비타민 D 결핍에 대처하는방법
-                  </button>
-                </strong>
-                <p className="date">2021.01.11</p>
-                <p className="like click_add_on">
-                  <button type="button">좋아요</button>
-                </p>
-              </div>
-              {/* inner end */}
-            </li>
-            <li className="swiper-slide">
-              <p className="img">
-                <button type="button">
-                  <img src={thum_test2} alt="" />
-                </button>
-              </p>
-
-              <div className="inner">
-                {/* inner start */}
-                <p className="type type2">의약상식</p>
-                <strong>
-                  <button type="button">
-                    집콕생활, 비타민 D 결핍에 대처하는방법
-                  </button>
-                </strong>
-                <p className="date">2021.01.11</p>
-                <p className="like click_add_on">
-                  <button type="button">좋아요</button>
-                </p>
-              </div>
-              {/* inner end */}
-            </li>
-            <li className="swiper-slide">
-              <p className="img">
-                <button type="button">
-                  <img src={thum_test3} alt="" />
-                </button>
-              </p>
-
-              <div className="inner">
-                {/* inner start */}
-                <p className="type type3">보건의료제도</p>
-                <strong>
-                  <button type="button">
-                    집콕생활, 비타민 D 결핍에 대처하는방법
-                  </button>
-                </strong>
-                <p className="date">2021.01.11</p>
-                <p className="like click_add_on">
-                  <button type="button">좋아요</button>
-                </p>
-              </div>
-              {/* inner end */}
-            </li>
-          </ul>
-
-          <div className="swiper_pag_wrap">
-            {/* swiper_pag_wrap start */}
-            <div className="swiper-pagination"></div>
-          </div>
-          {/* swiper_pag_wrap end */}
-        </section>
-        {/* swiper-container end */}
+        <div className="swiper_pag_wrap">
+          <div className="swiper-pagination"></div>
+        </div>
 
         <p className="more">
           <button type="button">HOME</button>

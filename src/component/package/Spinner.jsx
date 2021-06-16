@@ -16,13 +16,13 @@ const Spinner = (props) => {
     return(
         <>
         <div style={style.div}>
-            <Loader
+            {/* <Loader
                 type="Oval"
                 color="#61d8ff"
                 height={80}
                 width={80}
                 // timeout={3000} //3 secs
-            />
+            /> */}
             </div>
         </>
     )

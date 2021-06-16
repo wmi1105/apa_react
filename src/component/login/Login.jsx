@@ -1,19 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
 import Section from "component/common/Section";
-import AppleLoginBtn from "./socialLogin/AppleLoginBtn";
-import GoogleLoginBtn from "./socialLogin/GoogleLoginBtn";
-import KakaoLoginBtn from "./socialLogin/KakaoLoginBtn";
-import NaverLoginBtn from "./socialLogin/NaverLoginBtn";
 
 const Login = ({ history }) => {
-  const locialLoginResponse = (kind, result, response) => {
-    if (result) {
-      //success
-    } else {
-      //fail
-    }
-  };
 
   return (
     <>
@@ -50,13 +39,27 @@ const Login = ({ history }) => {
             </ul>
             <ul className="links">
               <li>
-                <button type="button" onClick={() => history.push('/auth/identification/phone/.find.email')}>이메일 찾기</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    history.push("/auth/identification/phone/.find.email")
+                  }
+                >
+                  이메일 찾기
+                </button>
               </li>
               <li>
-                <button type="button" onClick={() => history.push('/find/password')}>비밀번호 찾기</button>
+                <button
+                  type="button"
+                  onClick={() => history.push("/find/password")}
+                >
+                  비밀번호 찾기
+                </button>
               </li>
               <li>
-                <button type="button" onClick={() => history.push('/join')}>회원가입</button>
+                <button type="button" onClick={() => history.push("/join")}>
+                  회원가입
+                </button>
               </li>
             </ul>
             <dl className="sns">
@@ -64,25 +67,24 @@ const Login = ({ history }) => {
               <dd>
                 <ul>
                   <li className="kakao on">
-                    <KakaoLoginBtn onResponse={locialLoginResponse}>
+                    <button type="button" onClick={() => window.location.href='' }>
                       카카오톡으로 로그인<span>마지막 로그인 계정</span>
-                    </KakaoLoginBtn>
-
+                    </button>
                   </li>
                   <li className="naver">
-                    <NaverLoginBtn onResponse={locialLoginResponse}>
+                    <button type="button" onClick={() => window.location.href=''}>
                       네이버로 로그인<span>마지막 로그인 계정</span>
-                    </NaverLoginBtn>
+                    </button>
                   </li>
                   <li className="apple">
-                    <AppleLoginBtn onResponse={locialLoginResponse}>
+                    <button type="button" onClick={() => window.location.href=''}>
                       애플로 로그인<span>마지막 로그인 계정</span>
-                    </AppleLoginBtn>
+                    </button>
                   </li>
                   <li className="google">
-                    <GoogleLoginBtn onResponse={locialLoginResponse}>
+                    <button type="button" onClick={() => window.location.href=''}>
                       구글로 로그인<span>마지막 로그인 계정</span>
-                    </GoogleLoginBtn>
+                    </button>
                   </li>
                 </ul>
               </dd>

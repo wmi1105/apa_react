@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, c } from "react";
 
 import TermsContainer from "container/auth/TermsContainer";
 import TermsSection from "pages/auth/terms/TermsSection";
 import Container from "pages/inc/Container";
+import { withRouter } from "react-router-dom";
 
-const TermsPage = (props) => {
+const TermsPage = ({ history }) => {
   const [itemVisible, setItemVisible] = useState("");
-  const [clickNav, setClickNav] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [close, setClose] = useState(false);
 
-  const onClick = () => {
-    setClickNav(true);
-  };
+  useEffect(() => {
+    const unblock = history.block((location, action) => {
+          if (!close && action === "POP") {
+            setModalVisible(true);
+            return false;
+          }
+        });
+    return () => unblock()
+  },[history, close]);
 
   return (
     <>
@@ -21,14 +29,20 @@ const TermsPage = (props) => {
         nav={true}
         navOption={{
           headerId: "close",
-          headerPath: onClick,
+          headerPath: () => setModalVisible(true),
           title: "약관동의",
         }}
       >
         <TermsContainer
           onItemVisible={(val) => setItemVisible(val)}
-          clickNav={clickNav}
-          onClickNav={(val) => setClickNav(val)}
+          modalVisible={modalVisible}
+          onClickModal={(val) => {
+            setModalVisible(val);
+            if(val){
+              setClose(val)
+              history.goBack()
+            }
+          }}
         />
       </Container>
 
@@ -42,4 +56,4 @@ const TermsPage = (props) => {
   );
 };
 
-export default TermsPage;
+export default withRouter(TermsPage);

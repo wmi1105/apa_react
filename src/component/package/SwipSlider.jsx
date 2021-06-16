@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {
+  Autoplay,Pagination,Navigation
+} from 'swiper/core';
 
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.scss";
 
-const SwipSlider = ({ images, swipPage }) => {
+SwiperCore.use([Autoplay,Pagination,Navigation]);
+
+const SwipSlider = ({ items, swipPage, options}) => {
   const swiperRef = useRef();
 
   const onSlideChange = () => {
@@ -12,17 +17,30 @@ const SwipSlider = ({ images, swipPage }) => {
     swipPage(nowPage);
   };
 
+  // const options = useMemo(() => {
+  //   if(paging)
+  //     return {
+  //       navigation:true,
+  //       pagination:{
+  //         el:".health .swiper-pagination",
+	// 			  type:"bullets"
+  //       }
+  //     }
+  //     else
+  //     return null;
+  // }, [paging])
+
   return (
     <Swiper
       ref={swiperRef}
       className="mySwiper"
-      slidesPerView={1}
-      loop
+      speed={400}
       onSlideChange={onSlideChange}
+      {...options}
     >
-      {images.map((img, idx) => (
+      {items.map((item, idx) => (
         <SwiperSlide key={idx}>
-          <img src={img} alt="" />
+          {item}
         </SwiperSlide>
       ))}
     </Swiper>
@@ -30,3 +48,5 @@ const SwipSlider = ({ images, swipPage }) => {
 };
 
 export default SwipSlider;
+
+

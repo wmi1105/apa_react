@@ -19,7 +19,7 @@ export function redirectUrl(path){
   if(nextUrl !== '') redirect += '/'+nextUrl;
 
   return redirect;
- }
+}
 
  export function querStringParsing(query){
   return qs.parse(query, {

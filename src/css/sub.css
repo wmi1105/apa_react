@@ -216,18 +216,23 @@ dl.sec_info dd p{font-size:12px; line-height:18px; color:#606060;}
 /* 업슬라이드 */
 .up_slide{position:relative; height:270px;}
 .up_slide .swiper-container{position:relative; height:270px; z-index:1; overflow:hidden;}
-.up_slide .swiper-container .swiper-wrapper{position:absolute; top:15px; left:0; width:100%;}
-.up_slide .swiper-container .swiper-slide{font-size:50px; box-sizing:border-box; text-align:center; line-height:1.2; font-family:"nanum_b","돋움",sans-serif; color:#e2e2e2; vertical-align:middle;}
-.up_slide .swiper-container .swiper-slide span{margin-left:10px; font-size:40px;}
-.up_slide .swiper-container .swiper-slide.swiper-slide-active{margin:-20px 0; font-size:60px; color:#0BC6FF;}
+.up_slide .swiper-container .swiper-wrapper{position:absolute; top:-18px; left:0; width:100%;}
+.up_slide .swiper-container .swiper-slide{font-size:75px; padding:10px 0; box-sizing:border-box; text-align:center; line-height:1.2; font-family:"noto_mid","돋움",sans-serif; color:#e2e2e2; vertical-align:middle;}
+.up_slide .swiper-container .swiper-slide span{position:relative; top:-14px; margin-left:10px; font-size:40px;}
+.up_slide .swiper-container .swiper-slide.swiper-slide-active{margin:-25px 0 -5px 0; color:#0BC6FF;}
 .up_slide .swiper-container ul li.swiper-slide-prev,
-.up_slide .swiper-container ul li.swiper-slide-next{font-size:60px; color:#c8c8c8; }
+.up_slide .swiper-container ul li.swiper-slide-next{color:#c8c8c8; }
 
-.up_slide .swiper-container.han .swiper-slide{font-size:40px}
-.up_slide .swiper-container.han .swiper-slide.swiper-slide-active,
+
+.up_slide .swiper-container.han .swiper-wrapper{top:0;}
+.up_slide .swiper-container.han .swiper-slide{font-size:35px; font-family:"nanum_b","돋움",sans-serif;}
+.up_slide .swiper-container.han .swiper-slide.swiper-slide-active{margin:-25px 0 -15px 0;}
 .up_slide .swiper-container.han .swiper-slide.swiper-slide-next,
 .up_slide .swiper-container.han .swiper-slide.swiper-slide-prev{font-size:29px;}
-.up_slide .swiper-container.han .swiper-slide.swiper-slide-active{}
+
+.up_slide .swiper-container.unit .swiper-wrapper{top:-13px;}
+.up_slide .swiper-container.unit .swiper-slide{font-size:60px;}
+.up_slide .swiper-container.unit .swiper-slide span{top:-8px;}
 
 /* AI문진 프로필 */
 .profile #header{position:fixed; top:0; left:0; z-index:10; width:100%; padding:91px 20px 12px; box-sizing:border-box; background: transparent linear-gradient(180deg, #A3E0FF 0%, #65BEFF 100%) 0% 0% no-repeat padding-box; border-radius: 0px 0px 40px 0px;}

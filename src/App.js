@@ -2,13 +2,13 @@ import { BrowserRouter, Route } from "react-router-dom";
 import DynamicRoute from "react-dynamic-route";
 
 import "css/master.css";
-// import './css/swiper.css';
 import "css/common.css";
 import "css/sub.css";
-import "css/index.css";
+// import "css/index.css";
 
 import "js/common_pub.js";
 import "js/design_select.js";
+
 import Home from "pages/homePage";
 import Spinner from "component/package/Spinner";
 import SndPasswordPage from "pages/user/sndPasswordPage";

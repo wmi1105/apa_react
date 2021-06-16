@@ -233,9 +233,9 @@ $(document).on(
 // 		centeredSlides:true,
 // 		  coverflowEffect: {
 // 			rotate: 0,
-//             stretch: -37,
-//             depth:300,
-//             modifier: 2,
+//             stretch: -36,
+//             depth:295,
+//             modifier: 1.9,
 //             slideShadows : false
 // 		  },
 // 		updateOnWindowResize:true

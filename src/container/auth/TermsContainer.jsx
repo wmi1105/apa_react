@@ -1,35 +1,53 @@
+//https://gloriajun.github.io/frontend/2019/08/10/react-router-history.html
+import React from "react";
+import { withRouter } from "react-router-dom";
+import Modal from "component/common/Modal";
+import Terms from "component/terms/Terms";
 
-import React from 'react';
-import { withRouter } from 'react-router';
-import Modal from 'component/common/Modal';
-import Terms from 'component/terms/Terms';
+const TermsContainer = ({ history, onItemVisible, modalVisible, onClickModal }) => {
 
+  const termSubmit = (value) => {
+    history.push(
+      "/auth/identification/pass/.auth.sndPassword.setting'.user.info'"
+    ); //약관동의 후 본인인증 페이지로 이동
+  };
 
-const TermsContainer = ({history, onItemVisible, clickNav, onClickNav}) => {
+  // useEffect(() => {
+  //   if(close)history.goBack();
+  //   const unBlock = history.block((location, action) => {
+  //     // console.log('#### history block', action);
+  //     if (!close && action === "POP") {
+  //       setVisible(true);
+  //       // console.log("#### blocked ####");
+  //       return false;
+  //     }
+  //   });
     
-    const termSubmit = (value) => {
-        history.push("/auth/identification/pass/.auth.sndPassword.setting'.user.info'");   //약관동의 후 본인인증 페이지로 이동
-    }
+  //   return () => {
+  //     unBlock();
+  //   };
+  // }, [history, close]);
 
-    return(
-        <>
-        <Terms 
-            onItemVisible = {onItemVisible}
-            onSumbit={termSubmit}
-        />
+  return (
+    <>
+      <Terms onItemVisible={onItemVisible} onSumbit={termSubmit} />
 
-        <Modal
-            targetId = 'phone_mod'
-            visible = {clickNav}
-            cancelBtn = {true}
-            onClickCancel = {() => onClickNav(false)}
-            onClickOk = {() => history.push('/login')}
-        >
-            가입이 완료되지 않았습니다. <br/>
+      <Modal
+        targetId="join_cancel"
+        visible={modalVisible}
+        cancelBtn={true}
+        onClickCancel={() => onClickModal(false)}
+        onClickOk={() => onClickModal(true)}
+      >
+        <p>
+          <span>
+            가입이 완료되지 않았습니다. <br />
             가입을 취소하시겠습니까?
-        </Modal>
-        </>
-    )
-}
+          </span>
+        </p>
+      </Modal>
+    </>
+  );
+};
 
 export default withRouter(TermsContainer);
