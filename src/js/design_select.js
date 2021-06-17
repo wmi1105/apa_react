@@ -33,6 +33,8 @@ export function makeSelect(){
 		/* 셀렉트 옵션값을 가져와서 배열로 li안에 뿌림 끝*/
 		theFakeSelect.eq(i).css("width",fakeDd.eq(i).width()+1); //가짜 셀렉트 dt의 높이를 dd안에 요소를 가져와서 맞춤
 	}
+
+	return true;
 }
 
 export function reMakeSelect(){

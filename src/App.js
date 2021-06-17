@@ -4,7 +4,7 @@ import DynamicRoute from "react-dynamic-route";
 import "css/master.css";
 import "css/common.css";
 import "css/sub.css";
-// import "css/index.css";
+import "css/index.css";
 
 import "js/common_pub.js";
 import "js/design_select.js";
@@ -41,7 +41,7 @@ function App() {
                 throw e;
               })
           }
-          loading={<Spinner />}
+          // loading={<Spinner />}
           // props={{
           //   someProp1,
           //   someProp2,  // `someProp1` and `someProp2` are transfered to `module.dedault` above finally

@@ -179,16 +179,16 @@ $(document).on(
 	$(this).height(1).height( $(this).prop("scrollHeight")-28 );	
 });
 
-$(document).on(
-	"focus", ".check_ai.textarea textarea", function(){
-	$("#header").addClass("hideTop");
-	$(".check_ai.textarea :radio,.check_ai.textarea :checkbox").prop("checked",false);
-});
+// $(document).on(
+// 	"focus", ".check_ai.textarea textarea", function(){
+// 	$("#header").addClass("hideTop");
+// 	$(".check_ai.textarea :radio,.check_ai.textarea :checkbox").prop("checked",false);
+// });
 
-$(document).on(
-	"blur", ".check_ai.textarea textarea", function(){
-	$("#header").removeClass("hideTop");
-});
+// $(document).on(
+// 	"blur", ".check_ai.textarea textarea", function(){
+// 	$("#header").removeClass("hideTop");
+// });
 
 $(document).on(
 	"click", ".ai :reset", function(){
@@ -199,12 +199,12 @@ $(document).on(
 /* ai문진 글자영역 컨트롤 end */
 
 /* ai문진 왼/오른쪽 컨트롤 start */
-$(document).on(
-	"change", ".select_side :radio", function(){
-	var thisNum=$(this).parents("li").index();
-	$(".select_side .img img").hide();
-	$(".select_side .img img").eq(thisNum).show();
-});
+// $(document).on(
+// 	"change", ".select_side :radio", function(){
+// 	var thisNum=$(this).parents("li").index();
+// 	$(".select_side .img img").hide();
+// 	$(".select_side .img img").eq(thisNum).show();
+// });
 /* ai문진 왼/오른쪽 컨트롤 end */
 
 /* ai문진 기간선택 start */
@@ -213,7 +213,7 @@ $(document).on(
 	var thisSelect=$(this).closest("li").index();
 	var thisText=$(this).children("option:selected").text();
 
-	if(thisText=="0"){
+	if(thisText==="0"){
 		$(".select_time li").eq(thisSelect).hide();
 	}else{
 		$(".select_time li").eq(thisSelect).find("span:first").text(thisText);
@@ -370,7 +370,7 @@ makeUiPopup(
 
 export function onloadCall(){//화면 로드시 세팅 스크립트 실행
 	// setContents();
-	selectJs.makeSelect();
+	// selectJs.makeSelect();
 	makeCal();
 	
 	// if($(".up_slide").length > 0){

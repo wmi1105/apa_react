@@ -113,3 +113,14 @@ export function makePinPad() {
     $(".pin_pass .fake_key li").eq(i).addClass("on");
   }
 } */
+
+//ai문진 -> header를 숨기고 section을 맨 위로 올림
+export function addHideTop(){
+  $("#header").addClass("hideTop");
+	$(".check_ai.textarea :radio,.check_ai.textarea :checkbox").prop("checked",false);
+}
+
+// ai문진 -> header, section 제자리 
+export function removeHideTop(){
+  $("#header").removeClass("hideTop");
+}

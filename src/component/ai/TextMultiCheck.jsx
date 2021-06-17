@@ -1,97 +1,47 @@
 //텍스트 여러개 체크
+import React, { useState } from "react";
 import Section from "component/common/Section";
-import React from "react";
-import Header from "./Header";
+
+const items = [
+  {key:1, label:'무겁고 먹먹해요.'},
+  {key:2, label:'욱씬거려요.'},
+  {key:3, label:'띠를 두른듯 조여요.'},
+  {key:4, label:'1,2,3,4번째 손가락을 포함한 부위가 움직이기 어려워요.'},
+  {key:5, label:'깨지거나 째지는 느낌이에요.'}
+]
 
 const TextMultiCheck = (props) => {
+
+  const [check, setCheck] = useState({});
+
+  const onChangeCheckbox = (e) => {
+    const tmp = { ...check };
+    const key = e.target.value;
+    if (!tmp[key]) {
+      tmp[key] = true;
+    } else {
+      delete tmp[key];
+    }
+
+    setCheck({ ...tmp });
+  };
   return (
     <>
-        <Section>
-          {/* container start */}
-
-          <div id="contents">
-            {/* contents start */}
-
-            <ul className="check_ai">
-              <li>
+      <Section>
+        <div id="contents">
+          <ul className="check_ai">
+            {items.map((item, idx) => 
+               <li key={idx}>
                 <label>
-                  <input type="checkbox" title="" name="ai" />
+                  <input type="checkbox" name="ai" value={item.key} onChange={onChangeCheckbox}/>
                   <span className="fake"></span>
-                  <span className="txt">무겁고 먹먹해요.</span>
+                  <span className="txt">{item.label}</span>
                 </label>
               </li>
-              <li>
-                <label>
-                  <input type="checkbox" title="" name="ai" />
-                  <span className="fake"></span>
-                  <span className="txt">욱씬거려요.</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" title="" name="ai" />
-                  <span className="fake"></span>
-                  <span className="txt">띠를 두른듯 조여요.</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" title="" name="ai" />
-                  <span className="fake"></span>
-                  <span className="txt">
-                    1,2,3,4번째 손가락을 포함한 부위가 움직이기 어려워요.
-                  </span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" title="" name="ai" />
-                  <span className="fake"></span>
-                  <span className="txt">깨지거나 째지는 느낌이에요.</span>
-                </label>
-              </li>
-            </ul>
-          </div>
-          {/* contents end */}
-          </Section>
-        {/* container end */}
-
-        <footer id="footer" className="footer_area">
-          {/* footer start */}
-          <p>
-            <button type="button">이전 질문</button>
-          </p>
-          <p>
-            <button type="button">다음 질문</button>
-          </p>
-        </footer>
-        {/* footer end */}
-
-        <p className="lay_pop_blind"></p>
-
-        <div className="popup help_pop" id="help_pop">
-          {/* prifile_delete start */}
-          <strong>중강도 신체활동의 예</strong>
-
-          <section className="pop_cont">
-            {/* pop_cont start */}
-            <p>
-              빠르게 걷기, 복식테니스, 보통 속도로 자전거타기, 가벼운 물건
-              나르기, 청소 등
-            </p>
-            <p>
-              <img src="/apa/image/thum/thum_test.png" alt="" />
-            </p>
-          </section>
-          {/* pop_cont end */}
-
-          <p className="btn">
-            <button type="button" className="pop_confirm" onClick={null}>
-              확인
-            </button>
-          </p>
+            )}
+          </ul>
         </div>
-        {/* prifile_delete end */}
+      </Section>
     </>
   );
 };
