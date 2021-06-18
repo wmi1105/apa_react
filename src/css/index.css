@@ -1,7 +1,6 @@
 @charset"utf-8";
 
 /* 인덱스 전용 */
-.index #contents{}
 .index #contents h2{padding-bottom:20px; font-size:19px; color:#000; font-family:"nanum_b","돋움",sans-serif;}
 .index .mbanner{position:relative;}
 .index .mbanner .swiper_pag_wrap{position:absolute; bottom:56px; left:20px; z-index:2;}
@@ -9,6 +8,8 @@
 .index .mbanner .swiper-pagination:after{content:""; position:relative; top:2px; display:inline-block; width:11px; height:11px; margin-left:3px; background:url(image/common/icn_arrow_back.svg) no-repeat 0 0; background-size:100% auto; transform:rotate(-180deg); transform-origin:center center;}
 .index .mbanner .swiper-pagination span{line-height:22px; color:#fff; font-size:10px;}
 .index .mbanner .swiper-pagination-total{opacity:0.5;}
+.index .mbanner .swiper-slide button,
+.index .mbanner .swiper-slide img{width:100%;}
 
 .index .my_menu{padding:10px 20px 30px 20px;}
 .index .my_menu ul:after{content:""; display:block; clear:Both;}
@@ -25,7 +26,8 @@
 .index .my_menu ul li.last button:after{width:2px; height:14px; margin:-7px 0 0 -1px;}
 
 .index .shot_banner{padding:0 20px;}
-.index .shot_banner button{border:0 none; background:none;}
+.index .shot_banner button{width:100%; border:0 none; background:none;}
+.index .shot_banner img{width:100%;}
 
 .index .weather{padding:50px 20px;}
 .index .weather .shot,
@@ -90,11 +92,12 @@
 .index .health .inner .like{position:absolute; bottom:14px; right:20px; z-index:2;}
 .index .health .inner .like button{display:block; width:32px; height:32px; background:url(image/common/icn_like.svg) no-repeat 0 0; background-size:100% auto; text-indent:-999em; overflow:hidden;}
 .index .health .inner .like.on button{background:url(image/common/icn_like_on.svg) no-repeat 0 0; background-size:100% auto;}
-.index .health .swiper-pagination{position:absolute; text-align:center; bottom:5px;}
+.index .health .swiper-pagination{position:absolute; width:100%; text-align:center; bottom:5px;}
 .index .health .swiper-pagination-bullet{width:6px; height:6px; border-radius:3px; background:#6F6E6E; margin:0 4px;}
 
 .index .m_banner{margin-bottom:50px;}
-.index .m_banner button{border:0 none; background:none;}
+.index .m_banner button{width:100%; border:0 none; background:none;}
+.index .m_banner img{width:100%;}
 .index .info{padding:50px 0; background:#f0f0f0; text-align:center;}
 .index .info p:first-child button{display:block; width:100%; font-size:20px; color:#000; text-align:center; font-family:"nanum_b","돋움",sans-serif; text-align:center;}
 .index .info p:first-child button:after{content:""; position:relative; top:-1px; display:inline-block; width:28px; height:28px; margin-left:-8px; background:url(image/common/icn_arrow_back2.svg) no-repeat 0 0; background-size:100% auto; vertical-align:middle; transform:rotate(-180deg); transform-origin:center center;}

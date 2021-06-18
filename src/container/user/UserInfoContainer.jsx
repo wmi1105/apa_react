@@ -3,10 +3,22 @@ import React, { useState } from "react";
 import UserInfo from "component/user/UserInfo";
 import { withRouter } from "react-router";
 import UserInfoModal from "component/user/UserInfoModal";
+import SecondPassword from "component/sndPassword/SecondPassword";
 
 const UserInfoContainer = ({ history }) => {
+  const [pinCheck, setPinCheck] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTargetId, setModalTargetId] = useState("");
+
+  const onClickPin = (val) => {
+    if(val === 'back'){
+      history.goBack();
+    }
+    else if(val === 'done'){
+      //인증완료
+      setPinCheck(true);
+    }
+  }
 
   const modClickHandler = (type) => {
     switch (type) {
@@ -40,7 +52,7 @@ const UserInfoContainer = ({ history }) => {
   const modalClickOk = () => {
     switch (modalTargetId) {
       case "phone_mod":
-        history.push("/auth/identify/.user.info");
+        history.push("/auth/identification/pass/.user.info");
         break;
 
       case "email_mod":
@@ -59,10 +71,12 @@ const UserInfoContainer = ({ history }) => {
 
       <UserInfoModal
         targetId={modalTargetId}
-        visible = {modalVisible}
+        visible={modalVisible}
         onClickCancel={() => setModalVisible(false)}
         onClickOk={modalClickOk}
       />
+
+      <SecondPassword use='default' visible={!pinCheck} onClick={onClickPin} />
     </>
   );
 };

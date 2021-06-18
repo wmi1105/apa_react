@@ -10,8 +10,7 @@ import "js/common_pub.js";
 import "js/design_select.js";
 
 import Home from "pages/homePage";
-import Spinner from "component/package/Spinner";
-import SndPasswordPage from "pages/user/sndPasswordPage";
+// import Spinner from "component/package/Spinner";
 import IdentificationPage from "pages/auth/identificationPage";
 import LoginEmailPage from "pages/login/emailPage";
 
@@ -27,7 +26,6 @@ function App() {
         * 다음 경로까지 지정할 때 nextPage를 ''안에 넣음(/login 다음 /home일 때 .login'.home')
       */}
       <Route path="/login/email/:redirect" component={LoginEmailPage} />
-      <Route path="/auth/sndPassword/:use/:redirect" component={SndPasswordPage} exact />
       <Route path="/auth/identification/:use/:redirect" component={IdentificationPage} />
 
         <DynamicRoute

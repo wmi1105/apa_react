@@ -1,0 +1,10 @@
+diff a/React/src/css/common.css b/React/src/css/common.css	(rejected hunks)
+@@ -74,7 +74,7 @@
+ #header.close_header .close button{display:block; width:18px; height:18px; text-indent:-999em; overflow:hidden; background:url(image/common/icn_close_b.svg) no-repeat 0 0; background-size:100% auto; border:0 none;}
+ 
+ #header .share{position:absolute; right:12px; bottom:10px;}
+-#header .share button{display:block; width:32px; height:32px; background:url(/apa/image/common/icn_share.svg) no-repeat 0 0; background-size:100% auto; text-indent:-999em; overflow:hidden;}
++#header .share button{display:block; width:32px; height:32px; background:url(image/common/icn_share.svg) no-repeat 0 0; background-size:100% auto; text-indent:-999em; overflow:hidden;}
+ 
+ #header.hideTop{position:relative!important;}
+ #header.hideTop+#container{position:relative; top:0!important;}

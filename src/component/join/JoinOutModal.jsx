@@ -6,13 +6,26 @@ const JoinOutModal = (props) => {
     return(
         <>
             <Modal 
-                targetId = ""
+                targetId = "joinout"
+                modalClass = "confirm"
                 visible = {props.visible}
-                cancelBtn = {false}
-                onClickCancel = {null}
                 onClickOk={props.onClickOk}
             >
-                회원탈퇴가 완료되었습니다.   
+                <section className="pop_cont">
+              <p>
+                  <span>회원 탈퇴가 완료되었습니다.</span>
+              </p>
+            </section>
+
+            <ul className="btns">
+              <li>
+                <p className="btn">
+                  <button type="button" onClick={props.onClickOk}>
+                    확인
+                  </button>
+                </p>
+              </li>
+            </ul>
             </Modal>
         </>      
     )

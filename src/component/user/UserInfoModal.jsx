@@ -4,42 +4,37 @@ import Modal from "component/common/Modal";
 
 const UserInfoModal = ({ targetId, visible, onClickCancel, onClickOk }) => {
   const [input, setInput] = useState("");
-  const [valueCheck, setValuecheck]= useState(null);
+  const [valueCheck, setValuecheck] = useState(null);
 
   const onClickHandler = useCallback(() => {
-    if(targetId === 'email_mod'){
+    if (targetId === "email_mod") {
       const check = emailValueCheck(input);
-      if(!check) {
+      if (!check) {
         setValuecheck(false);
         return false;
       }
     }
-    onClickOk({data:input})
-  }, [targetId, input, onClickOk])
+    onClickOk({ data: input });
+  }, [targetId, input, onClickOk]);
 
   useEffect(() => {
     setValuecheck(null);
-  }, [targetId, visible])
+  }, [targetId, visible]);
 
   return (
     <>
-      <Modal
-        targetId = {targetId}
-        visible = {visible}
-        cancelBtn = {true}
-        onClickCancel = {onClickCancel}
-        onClickOk = {onClickHandler}
-      >
-        {targetId === "phone_mod" && (
-          <p>
-            <span>
-              휴대폰번호 변경 시 본인인증이 필요하며, 인증 후 휴대폰 번호가 자동
-              변경됩니다. 인증을 진행하시겠습니까?
-            </span>
-          </p>
-        )}
+      <Modal targetId={targetId} visible={visible} modalClass="confirm">
+        <section className="pop_cont">
+          {targetId === "phone_mod" && (
+            <p>
+              <span>
+                휴대폰번호 변경 시 본인인증이 필요하며, 인증 후 휴대폰 번호가
+                자동 변경됩니다. 인증을 진행하시겠습니까?
+              </span>
+            </p>
+          )}
 
-        {targetId === "email_mod" && (
+          {targetId === "email_mod" && (
             <div className="input">
               {/* input start */}
               <strong>이메일 주소 수정</strong>
@@ -51,18 +46,41 @@ const UserInfoModal = ({ targetId, visible, onClickCancel, onClickOk }) => {
                     title="이메일 입력"
                     placeholder="이메일을 입력해 주세요."
                     value={input}
-                    onChange={(e) =>{
-                        setInput(e.target.value);
-                        setValuecheck(null);
-                      }}
+                    onChange={(e) => {
+                      setInput(e.target.value);
+                      setValuecheck(null);
+                    }}
                     // readOnly
                   />
-                  {valueCheck === false && <p className="info">이메일 형식이 올바르지 않습니다.</p>}
+                  {valueCheck === false && (
+                    <p className="info">이메일 형식이 올바르지 않습니다.</p>
+                  )}
                 </li>
               </ul>
             </div>
-        )}
+          )}
+        </section>
 
+        <ul className="btns">
+          <li>
+            <p className="btn">
+              <button
+                type="button"
+                className="pop_confirm"
+                onClick={onClickCancel}
+              >
+                취소
+              </button>
+            </p>
+          </li>
+          <li>
+            <p className="btn">
+              <button type="button" onClick={onClickHandler}>
+                확인
+              </button>
+            </p>
+          </li>
+        </ul>
       </Modal>
     </>
   );

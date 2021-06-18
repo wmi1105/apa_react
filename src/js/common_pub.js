@@ -25,13 +25,11 @@ export function setContents(){
 	headerH = (headerH) ? headerH : 0;
 	fooderH = (fooderH) ? fooderH : 0;
 
-	const size = {
-		height : windowH-(headerH+fooderH),
-		top : headerH+1
+	return{
+		windowH:windowH, 
+		headerH:headerH, 
+		fooderH:fooderH
 	}
-
-	return size;
-
 }
 /* 화면 컨텐츠 높이 세팅 end */
 

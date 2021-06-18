@@ -15,13 +15,13 @@ const ChangePasswordContainer = ({ history, match }) => {
   };
 
   const modalClickOk = () => {
-    if(!confirm){
+    if (!confirm) {
       return false;
     }
 
     setModalVisible(false);
-    history.push("/user/info")
-  }
+    history.push("/user/info");
+  };
 
   return (
     <>
@@ -30,17 +30,27 @@ const ChangePasswordContainer = ({ history, match }) => {
       <Modal
         targetId="password_mod"
         visible={modalVisible}
-        cancelBtn={false}
-        onClickCancel={null}
-        onClickOk={modalClickOk}
+        modalClass="confirm"
       >
-        <p>
-          <span>
-            {confirm
-              ? "비밀번호가 변경되었습니다."
-              : "이전과 동일한 비밀번호입니다."}
-          </span>
-        </p>
+        <section className="pop_cont">
+          <p>
+            <span>
+              {confirm
+                ? "비밀번호가 변경되었습니다."
+                : "이전과 동일한 비밀번호입니다."}
+            </span>
+          </p>
+        </section>
+
+        <ul className="btns">
+          <li>
+            <p className="btn">
+              <button type="button" onClick={modalClickOk}>
+                확인
+              </button>
+            </p>
+          </li>
+        </ul>
       </Modal>
     </>
   );

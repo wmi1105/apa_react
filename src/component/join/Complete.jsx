@@ -32,7 +32,7 @@ const Complete = ({history}) => {
     <FixButton
         label="가입정보 확인하기"
         btnDisable = {false}
-        onClick={() => history.push('/auth/sndPassword/setting/.user.info')}
+        onClick={() => history.push('/user/info')}
       />
     </>
   );

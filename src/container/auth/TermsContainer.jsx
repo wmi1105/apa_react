@@ -4,8 +4,12 @@ import { withRouter } from "react-router-dom";
 import Modal from "component/common/Modal";
 import Terms from "component/terms/Terms";
 
-const TermsContainer = ({ history, onItemVisible, modalVisible, onClickModal }) => {
-
+const TermsContainer = ({
+  history,
+  onItemVisible,
+  modalVisible,
+  onClickModal,
+}) => {
   const termSubmit = (value) => {
     history.push(
       "/auth/identification/pass/.auth.sndPassword.setting'.user.info'"
@@ -22,7 +26,7 @@ const TermsContainer = ({ history, onItemVisible, modalVisible, onClickModal }) 
   //       return false;
   //     }
   //   });
-    
+
   //   return () => {
   //     unBlock();
   //   };
@@ -32,19 +36,36 @@ const TermsContainer = ({ history, onItemVisible, modalVisible, onClickModal }) 
     <>
       <Terms onItemVisible={onItemVisible} onSumbit={termSubmit} />
 
-      <Modal
-        targetId="join_cancel"
-        visible={modalVisible}
-        cancelBtn={true}
-        onClickCancel={() => onClickModal(false)}
-        onClickOk={() => onClickModal(true)}
-      >
-        <p>
-          <span>
-            가입이 완료되지 않았습니다. <br />
-            가입을 취소하시겠습니까?
-          </span>
-        </p>
+      <Modal targetId="join_cancel" visible={modalVisible} modalClass="confirm">
+        <section className="pop_cont">
+          <p>
+            <span>
+              가입이 완료되지 않았습니다. <br />
+              가입을 취소하시겠습니까?
+            </span>
+          </p>
+        </section>
+
+        <ul className="btns">
+          <li>
+            <p className="btn">
+              <button
+                type="button"
+                className="pop_confirm"
+                onClick={() => onClickModal(false)}
+              >
+                취소
+              </button>
+            </p>
+          </li>
+          <li>
+            <p className="btn">
+              <button type="button" onClick={() => onClickModal(true)}>
+                확인
+              </button>
+            </p>
+          </li>
+        </ul>
       </Modal>
     </>
   );

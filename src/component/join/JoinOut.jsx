@@ -1,18 +1,17 @@
 import React from "react";
 import Section from "component/common/Section";
-import FixChkButton from "component/common/FixChkButton";
 
-const JoinOut = ({onClick}) => {
+const JoinOut = (props) => {
   return (
     <>
       <Section>
         <div id="contents">
-          <strong class="out_desc">
+          <strong className="out_desc">
             회원 탈퇴하시기 전에
             <br />
             안내사항을 확인해 주세요.
           </strong>
-          <dl class="sec_info">
+          <dl className="sec_info">
             <dt>1. 개인정보 및 이용기록 삭제 안내</dt>
             <dd>
               <p>
@@ -37,12 +36,6 @@ const JoinOut = ({onClick}) => {
           </dl>
         </div>
       </Section>
-
-      <FixChkButton
-        btnLabel="탈퇴하기"
-        chkLabel="모든 정보를 삭제하는 것에 동의합니다."
-        onClick={onClick}
-      />
     </>
   );
 };

@@ -3,6 +3,7 @@ import SwipSlider from "component/package/SwipSlider";
 import thum_test1 from "image/thum/thum_test1.png";
 import thum_test2 from "image/thum/thum_test2.png";
 import thum_test3 from "image/thum/thum_test3.png";
+import { withRouter } from "react-router-dom";
 
 const contents = [
   {
@@ -25,23 +26,28 @@ const contents = [
   },
 ];
 
-const HealthNTalk = (props) => {
+const HealthNTalk = ({history}) => {
+  
+  const onClickDetail = (id) => {
+    history.push('/nTalk/detail')
+  }
+
   const items = useMemo(() => {
     return contents.map((item) => (
       <>
         <p className="img">
-          <button type="button">
+          <button type="button"  onClick={onClickDetail}>
             <img src={item.img} alt="" />
           </button>
         </p>
 
         <div className="inner">
           {/* inner start */}
-          <p className="type type1">{item.category}</p>
-          <strong>
-            <button type="button">{item.title}</button>
-          </strong>
-          <p className="date">{item.date}</p>
+            <p className="type type1">{item.category}</p>
+            <strong>
+              <button type="button" onClick={onClickDetail}>{item.title}</button>
+            </strong>
+            <p className="date">{item.date}</p>
           <p className="like click_add_on">
             <button type="button">좋아요</button>
           </p>
@@ -81,7 +87,7 @@ const HealthNTalk = (props) => {
         </div>
 
         <p className="more">
-          <button type="button">HOME</button>
+          <button type="button" onClick={() => history.push('/nTalk/list')}>HOME</button>
         </p>
       </article>
       {/* health end */}
@@ -89,4 +95,4 @@ const HealthNTalk = (props) => {
   );
 };
 
-export default HealthNTalk;
+export default withRouter(HealthNTalk);

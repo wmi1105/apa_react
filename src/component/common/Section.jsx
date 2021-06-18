@@ -5,7 +5,13 @@ const Section = (props) => {
     const [containerSize, setContainerSize] = useState(null);
     useEffect(() => {
         const size = setContents();
-        setContainerSize({...size, backgroundColor : '#fff'});
+        const style = {
+            height : size.windowH-(size.headerH+size.fooderH),
+		    top : size.headerH+1,
+            backgroundColor : '#fff'
+        }
+
+        setContainerSize(style);
     }, [])
 
     return(

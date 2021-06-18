@@ -5,17 +5,15 @@ import { modalHide, modalShow } from "js/common";
 /* 
 <Modal
         targetId = ''
+        modalClass = ''
         visible = {visible}
-        cancelBtn = {true}
-        onClickCancel = {onClickCancel}
-        onClickOk = {onClickOk}
     >
     </Modal>
 */
 
 
 const Modal = (props) => {
-  const { targetId, visible, cancelBtn, onClickCancel, onClickOk } = props;
+  const { modalClass, targetId, visible} = props;
   const [modalVisible, setModalVisible] = useState(false);
 
   const modalHideHandler = useCallback(() => {
@@ -27,47 +25,30 @@ const Modal = (props) => {
     }
   }, [modalVisible, targetId]);
 
+  const modalShowHandler = useCallback(() => {
+    setModalVisible(true);
+    setTimeout(() => {
+      modalShow(targetId);
+    }, 100);
+  }, [targetId]);
+
   useEffect(() => {
     if (visible) {
-      setModalVisible(true);
-      modalShow(targetId);
+      // setModalVisible(true);
+      // modalShow(targetId);
+      modalShowHandler();
     } else {
       modalHideHandler();
     }
-  }, [visible, targetId, modalHideHandler]);
+  }, [visible, targetId, modalHideHandler, modalShowHandler]);
 
   return (
     <>
       {modalVisible && (
         <>
           <p className="lay_pop_blind"></p>
-          <div className="popup confirm" id={targetId}>
-            <section className="pop_cont">
+          <div className={`popup ${modalClass}`} id={targetId}>          
               {props.children}
-            </section>
-
-            <ul className="btns">
-              {cancelBtn && (
-                <li>
-                  <p className="btn">
-                    <button
-                      type="button"
-                      className="pop_confirm"
-                      onClick={onClickCancel}
-                    >
-                      취소
-                    </button>
-                  </p>
-                </li>
-              )}
-              <li>
-                <p className="btn">
-                  <button type="button" onClick={onClickOk}>
-                    확인
-                  </button>
-                </p>
-              </li>
-            </ul>
           </div>
         </>
       )}

@@ -9,7 +9,7 @@ import Nav from 'pages/inc/Nav';
 // nav={true}
 // navOption={{
 //     headerId: "close",
-//     headerPath: "close",
+//     headerPath: (0 => history.push('/home')),
 //     title: "회원가입완료",
 // }}
 

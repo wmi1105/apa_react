@@ -28,7 +28,9 @@ const SndPasswordContainer = ({ history, match, location }) => {
       //비밀번호 인증
 
       //비밀번호 인증 실패했을 때
-      //   setFailCount(failCount + 1);
+        // setFailCount(failCount + 1);
+        // return false;
+
 
       //비밀번호 인증 성공했을 때
       history.push(redirect);
